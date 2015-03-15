@@ -60,7 +60,7 @@ public:
 	int		OnTakeDamage( const CTakeDamageInfo &info );
 	void		 EnableMotion( void );
 
-	bool CanBePickedUpByPhyscannon();
+	bool CanBePickedUpByPhyscannon() const;
 
 	// IPlayerPickupVPhysics
 	virtual void OnPhysGunPickup( CBasePlayer *pPhysGunUser, PhysGunPickup_t reason );

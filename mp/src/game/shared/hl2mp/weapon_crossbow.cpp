@@ -409,6 +409,18 @@ public:
 	virtual void Operator_HandleAnimEvent( animevent_t *pEvent, CBaseCombatCharacter *pOperator );
 #endif
 
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_WEAPON + HL2DM_WP_CROWBAR;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_WEAPON );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
+
 	DECLARE_NETWORKCLASS(); 
 	DECLARE_PREDICTABLE();
 

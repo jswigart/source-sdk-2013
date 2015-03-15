@@ -240,6 +240,18 @@ public:
 
 #endif	//CLIENT_DLL
 
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_WEAPON + HL2DM_WP_RPG;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_WEAPON );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
+
 	CBaseEntity *GetMissile( void ) { return m_hMissile; }
 
 #ifndef CLIENT_DLL

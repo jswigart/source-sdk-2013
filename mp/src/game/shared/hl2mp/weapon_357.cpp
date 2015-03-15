@@ -39,7 +39,18 @@ public:
 #ifndef CLIENT_DLL
 	DECLARE_ACTTABLE();
 #endif
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_WEAPON + HL2DM_WP_REVOLVER;
 
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_WEAPON );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 private:
 	
 	CWeapon357( const CWeapon357 & );

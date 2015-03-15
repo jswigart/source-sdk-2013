@@ -178,6 +178,9 @@ public:
 	virtual float		GetFogObscuredRatio( CBaseEntity *target ) const;	///< return 0-1 ratio where zero is not obscured, and 1 is completely obscured
 	virtual float		GetFogObscuredRatio( float range ) const;		///< return 0-1 ratio where zero is not obscured, and 1 is completely obscured
 
+#ifdef USE_OMNIBOT
+	virtual void GetOmnibotEntityFlags( BitFlag64 & entityFlags ) const;
+#endif
 
 	// -----------------------
 	// Vision
@@ -328,6 +331,17 @@ public:
 	virtual int				IRelationPriority( CBaseEntity *pTarget );
 
 	virtual void			SetLightingOriginRelative( CBaseEntity *pLightingOrigin );
+
+#ifdef USE_OMNIBOT
+	inline bool IsOmnibot() const
+	{
+		return m_bIsOmnibot;
+	}
+	inline void SetIsOmnibot( bool b )
+	{
+		m_bIsOmnibot = b;
+	}
+#endif
 
 protected:
 	Relationship_t			*FindEntityRelationship( CBaseEntity *pTarget );
@@ -536,6 +550,8 @@ protected:
 	CNavArea *m_lastNavArea;
 	CAI_MoveMonitor m_NavAreaUpdateMonitor;
 	int m_registeredNavTeam;	// ugly, but needed to clean up player team counts in nav mesh
+
+	bool m_bIsOmnibot;
 };
 
 

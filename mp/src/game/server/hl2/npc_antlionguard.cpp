@@ -307,6 +307,14 @@ public:
 
 	DEFINE_CUSTOM_AI;
 
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_ANTLION_GUARD;
+		category.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
 private:
 
 	inline bool CanStandAtPoint( const Vector &vecPos, Vector *pOut );

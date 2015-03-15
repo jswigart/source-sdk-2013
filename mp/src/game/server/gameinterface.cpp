@@ -129,6 +129,10 @@ extern ConVar tf_mm_servermode;
 #include "replay/ireplaysystem.h"
 #endif
 
+#ifdef USE_OMNIBOT
+#include "omnibot/omnibot_interface.h"
+#endif
+
 extern IToolFrameworkServer *g_pToolFrameworkServer;
 extern IParticleSystemQuery *g_pParticleSystemQuery;
 
@@ -740,6 +744,11 @@ bool CServerGameDLL::DLLInit( CreateInterfaceFn appSystemFactory,
 
 	// init the gamestatsupload connection
 	gamestatsuploader->InitConnection();
+
+#ifdef USE_OMNIBOT
+	omnibot_interface::OnDLLInit();
+#endif
+
 #endif
 
 	return true;
@@ -752,6 +761,9 @@ void CServerGameDLL::PostInit()
 
 void CServerGameDLL::DLLShutdown( void )
 {
+#ifdef USE_OMNIBOT
+	omnibot_interface::OnDLLShutdown();
+#endif
 
 	// Due to dependencies, these are not autogamesystems
 	ModelSoundsCacheShutdown();
@@ -1065,6 +1077,10 @@ bool CServerGameDLL::LevelInit( const char *pMapName, char const *pMapEntities, 
 	// clear any pending autosavedangerous
 	m_fAutoSaveDangerousTime = 0.0f;
 	m_fAutoSaveDangerousMinHealthToCommit = 0.0f;
+
+#ifdef USE_OMNIBOT
+	omnibot_interface::LevelInit();
+#endif
 	return true;
 }
 
@@ -1142,6 +1158,12 @@ void CServerGameDLL::ServerActivate( edict_t *pEdictList, int edictCount, int cl
 #ifdef NEXT_BOT
 	TheNextBots().OnMapLoaded();
 #endif
+
+#ifdef USE_OMNIBOT
+	// Omni-bot: Initialize the bot interface
+	omnibot_interface::InitBotInterface();
+#endif
+
 }
 
 //-----------------------------------------------------------------------------
@@ -1232,6 +1254,11 @@ void CServerGameDLL::GameFrame( bool simulating )
 #endif
 
 	gamestatsuploader->UpdateConnection();
+
+#ifdef USE_OMNIBOT
+	// Omni-bot: Update the bot interface
+	omnibot_interface::UpdateBotInterface();
+#endif
 #endif
 
 	UpdateQueryCache();
@@ -1373,6 +1400,11 @@ void CServerGameDLL::LevelShutdown( void )
 #endif
 
 	g_pServerBenchmark->EndBenchmark();
+
+#ifdef USE_OMNIBOT
+	// Omni-bot: Shut down the bot interface
+	omnibot_interface::ShutdownBotInterface();
+#endif
 
 	MDLCACHE_CRITICAL_SECTION();
 	IGameSystem::LevelShutdownPreEntityAllSystems();

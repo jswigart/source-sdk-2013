@@ -66,6 +66,18 @@ public:
 		}
 		return false;
 	}
+
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_PISTOL_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_box_srounds, CItem_BoxSRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_pistol, CItem_BoxSRounds);
@@ -100,6 +112,18 @@ public:
 		}
 		return false;
 	}
+
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_LARGE_PISTOL_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_large_box_srounds, CItem_LargeBoxSRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_pistol_large, CItem_LargeBoxSRounds);
@@ -134,6 +158,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_SMG_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_box_mrounds, CItem_BoxMRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_smg1, CItem_BoxMRounds);
@@ -168,6 +203,18 @@ public:
 		}
 		return false;
 	}
+
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_LARGE_SMG_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_large_box_mrounds, CItem_LargeBoxMRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_smg1_large, CItem_LargeBoxMRounds);
@@ -202,6 +249,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_AR2_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_box_lrounds, CItem_BoxLRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_ar2, CItem_BoxLRounds);
@@ -236,6 +294,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_LARGE_AR2_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_large_box_lrounds, CItem_LargeBoxLRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_ar2_large, CItem_LargeBoxLRounds);
@@ -272,6 +341,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_357_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_ammo_357, CItem_Box357Rounds);
 
@@ -307,6 +387,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_LARGE_357_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_ammo_357_large, CItem_LargeBox357Rounds);
 
@@ -343,6 +434,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_CROSSBOW_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_ammo_crossbow, CItem_BoxXBowRounds);
 
@@ -377,6 +479,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_LARGE_FLARE_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_flare_round, CItem_FlareRound);
 
@@ -412,6 +525,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_FLARE_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_box_flare_rounds, CItem_BoxFlareRounds);
 
@@ -445,6 +569,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_RPG_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS( item_ml_grenade, CItem_RPG_Round );
 LINK_ENTITY_TO_CLASS( item_rpg_round, CItem_RPG_Round );
@@ -479,6 +614,18 @@ public:
 		}
 		return false;
 	}
+
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_AR2GREN_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_ar2_grenade, CItem_AR2_Grenade);
 LINK_ENTITY_TO_CLASS(item_ammo_smg1_grenade, CItem_AR2_Grenade);
@@ -515,6 +662,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_SNIPER_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_box_sniper_rounds, CItem_BoxSniperRounds);
 
@@ -549,6 +707,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_SHOTGUN_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_box_buckshot, CItem_BoxBuckshot);
 
@@ -585,6 +754,17 @@ public:
 		}
 		return false;
 	}
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_AR2_ALTFIRE_AMMO;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 
 LINK_ENTITY_TO_CLASS( item_ammo_ar2_altfire, CItem_AR2AltFireRound );
@@ -633,7 +813,52 @@ public:
 	void	CrateThink( void );
 	
 	virtual int OnTakeDamage( const CTakeDamageInfo &info );
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		switch ( m_nAmmoType )
+		{
+			case AMMOCRATE_SMALL_ROUNDS:
+				classId = HL2DM_CLASSEX_LARGE_PISTOL_AMMO;
+				break;
+			case AMMOCRATE_MEDIUM_ROUNDS:
+				classId = HL2DM_CLASSEX_LARGE_SMG_AMMO;
+				break;
+			case AMMOCRATE_LARGE_ROUNDS:
+				classId = HL2DM_CLASSEX_LARGE_AR2_AMMO;
+				break;
+			case AMMOCRATE_RPG_ROUNDS:
+				classId = HL2DM_CLASSEX_RPG_AMMO;
+				break;
+			case AMMOCRATE_BUCKSHOT:
+				classId = HL2DM_CLASSEX_SHOTGUN_AMMO;
+				break;
+			case AMMOCRATE_357:
+				classId = HL2DM_CLASSEX_LARGE_357_AMMO;
+				break;
+			case AMMOCRATE_GRENADES:
+				classId = HL2DM_CLASSEX_GRENADE_AMMO;
+				break;
+			case AMMOCRATE_CROSSBOW:
+				classId = HL2DM_CLASSEX_CROSSBOW_AMMO;
+				break;
+			case AMMOCRATE_AR2_ALTFIRE:
+				classId = HL2DM_CLASSEX_AR2_ALTFIRE_AMMO;
+				break;
+			case AMMOCRATE_SMG_ALTFIRE:
+				classId = HL2DM_CLASSEX_SMG_ALTFIRE_AMMO;
+				break;
+			default:
+				return false;
+		}
 
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_AMMO );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 protected:
 
 	int		m_nAmmoType;

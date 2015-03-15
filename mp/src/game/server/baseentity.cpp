@@ -7296,6 +7296,29 @@ void CBaseEntity::SetCollisionBoundsFromModel()
 	}
 }
 
+#ifdef USE_OMNIBOT
+bool CBaseEntity::GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+{
+	return false;
+}
+void CBaseEntity::GetOmnibotEntityFlags( BitFlag64 & entityFlags ) const
+{
+	if ( IsEffectActive( EF_NODRAW ) )
+	{
+		entityFlags.SetFlag( ENT_FLAG_DISABLED, true );
+	}
+
+	const int waterLevel = GetWaterLevel();
+	if ( waterLevel == 3 )
+		entityFlags.SetFlag( ENT_FLAG_UNDERWATER );
+	else if ( waterLevel >= 2 )
+		entityFlags.SetFlag( ENT_FLAG_INWATER );
+
+	if ( GetFlags() & FL_ONGROUND )
+		entityFlags.SetFlag( ENT_FLAG_ONGROUND );
+}
+#endif
+
 
 //------------------------------------------------------------------------------
 // Purpose: Create an NPC of the given type

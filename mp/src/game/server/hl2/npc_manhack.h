@@ -170,7 +170,15 @@ public:
 		m_iHealth = 0;
 	}
 
-
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_MANHACK;
+		category.SetFlag( ENT_CAT_SHOOTABLE );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 	DEFINE_CUSTOM_AI;
 
 	DECLARE_DATADESC();

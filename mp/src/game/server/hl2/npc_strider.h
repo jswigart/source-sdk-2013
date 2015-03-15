@@ -340,6 +340,15 @@ public:
 	void	StriderBusterDetached( CBaseEntity *pAttached );
 #endif // HL2_EPISODIC
 
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_HUNTER;
+		category.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
+
 public:
 
 	//---------------------------------

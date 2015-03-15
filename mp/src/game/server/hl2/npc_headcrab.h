@@ -91,6 +91,15 @@ public:
 
 	void DropFromCeiling( void );
 
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_HEADCRAB;
+		category.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
+
 	DEFINE_CUSTOM_AI;
 	DECLARE_DATADESC();
 
@@ -223,6 +232,15 @@ public:
 	};
 
 	DEFINE_CUSTOM_AI;
+
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_HEADCRAB_FAST;
+		category.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
 };
 
 

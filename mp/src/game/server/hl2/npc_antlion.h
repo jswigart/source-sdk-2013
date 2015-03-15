@@ -175,6 +175,15 @@ public:
 
 	virtual void	NotifyDeadFriend( CBaseEntity *pFriend );
 
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = IsWorker() ? HL2DM_CLASSEX_ANTLION_WORKER : HL2DM_CLASSEX_ANTLION;
+		category.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
+
 private:
 
 	inline CBaseEntity *EntityToWatch( void );

@@ -30,6 +30,18 @@ public:
 	void Spawn( void );
 	void Precache( void );
 	bool MyTouch( CBasePlayer *pPlayer );
+
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_HEALTHKIT;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_HEALTH );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 
 LINK_ENTITY_TO_CLASS( item_healthkit, CHealthKit );
@@ -145,6 +157,18 @@ public:
 
 		return false;
 	}
+
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_HEALTHVIAL;
+		category.SetFlag( ENT_CAT_PICKUP );
+		category.SetFlag( ENT_CAT_PICKUP_HEALTH );
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 
 LINK_ENTITY_TO_CLASS( item_healthvial, CHealthVial );
@@ -179,6 +203,16 @@ public:
 
 	COutputFloat m_OutRemainingHealth;
 	COutputEvent m_OnPlayerUse;
+
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
+		return true;
+	}
+#endif
 
 	DECLARE_DATADESC();
 };
@@ -447,6 +481,16 @@ public:
 	void StudioFrameAdvance ( void );
 
 	float m_flJuice;
+
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
+		return true;
+	}
+#endif
 
 	DECLARE_DATADESC();
 };
@@ -741,3 +785,27 @@ void CNewWallHealth::Off(void)
 	}
 }
 
+
+#ifdef USE_OMNIBOT
+bool GetWallHealthStatus( CBaseEntity * ent, float &charge, float &maxCharge )
+{
+	int classId = 0;
+	BitFlag32 category;
+	if ( ent && ent->GetOmnibotEntityType( classId, category ) && classId == HL2DM_CLASSEX_HEALTH_WALLUNIT )
+	{
+		if ( CNewWallHealth *pUnit = dynamic_cast<CNewWallHealth*>( ent ) )
+		{
+			charge = pUnit->m_flJuice;
+			maxCharge = sk_healthcharger.GetFloat();
+			return true;
+		}
+		if ( CWallHealth *pUnit = dynamic_cast<CWallHealth*>( ent ) )
+		{
+			charge = (float)pUnit->m_iJuice;
+			maxCharge = sk_healthcharger.GetFloat();
+			return true;
+		}
+	}
+	return false;
+}
+#endif

@@ -2625,7 +2625,7 @@ bool CPhysicsProp::CreateVPhysics()
 // Purpose: 
 // Output : Returns true on success, false on failure.
 //-----------------------------------------------------------------------------
-bool CPhysicsProp::CanBePickedUpByPhyscannon( void )
+bool CPhysicsProp::CanBePickedUpByPhyscannon( void ) const
 {
 	if ( HasSpawnFlags( SF_PHYSPROP_PREVENT_PICKUP ) )
 		return false;
@@ -5783,6 +5783,56 @@ void CPhysicsPropRespawnable::Materialize( void )
 	Spawn();
 }
 
+#ifdef USE_OMNIBOT
+
+bool CBreakableProp::GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+{
+	if ( m_explodeDamage > 0 || m_explodeRadius > 0 )
+		classId = ENT_CLASS_GENERIC_PROP_EXPLODE;
+	else
+		classId = ENT_CLASS_GENERIC_PROP;
+
+	//category.SetFlag( ENT_CAT_PROP_PUSHABLE );
+	category.SetFlag( ENT_CAT_NOLOS );
+	category.SetFlag( ENT_CAT_OBSTACLE );
+	category.SetFlag( ENT_CAT_MOVER );
+	return true;
+}
+
+void CBreakableProp::GetOmnibotEntityFlags( class BitFlag64 & entityFlags ) const
+{
+	if ( VPhysicsGetObject() != NULL && IsSolid() )
+	{
+		entityFlags.SetFlag( ENT_FLAG_COLLIDABLE );
+	}
+}
+
+bool CPhysicsProp::GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+{
+	if ( m_explodeDamage > 0 || m_explodeRadius > 0 )
+		classId = ENT_CLASS_GENERIC_PROP_EXPLODE;
+	else
+		classId = ENT_CLASS_GENERIC_PROP;
+
+	category.SetFlag( ENT_CAT_PROP_PUSHABLE );
+	category.SetFlag( ENT_CAT_NOLOS );
+	category.SetFlag( ENT_CAT_OBSTACLE );
+	category.SetFlag( ENT_CAT_MOVER );
+
+	if ( CanBePickedUpByPhyscannon() )
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+	return true;
+}
+
+void CPhysicsProp::GetOmnibotEntityFlags( class BitFlag64 & entityFlags ) const
+{
+	if ( VPhysicsGetObject() != NULL )
+	{
+		entityFlags.SetFlag( ENT_FLAG_COLLIDABLE );
+	}
+}
+
+#endif
 
 //------------------------------------------------------------------------------
 // Purpose: Create a prop of the given type

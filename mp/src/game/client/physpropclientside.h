@@ -61,8 +61,8 @@ public:
 	float			GetDmgModExplosive( void ) { return m_flDmgModExplosive; }
 	void			SetExplosiveRadius( float flRadius ) { m_explodeRadius = flRadius; }
 	void			SetExplosiveDamage( float flDamage ) { m_explodeDamage = flDamage; }
-	float			GetExplosiveRadius( void ) { return m_explodeRadius; }
-	float			GetExplosiveDamage( void ) { return m_explodeDamage; }
+	float			GetExplosiveRadius( void ) const { return m_explodeRadius; }
+	float			GetExplosiveDamage( void ) const { return m_explodeDamage; }
 	void			SetPhysicsDamageTable( string_t iszTableName ) { m_iszPhysicsDamageTableName = iszTableName; }
 	string_t		GetPhysicsDamageTable( void ) { return m_iszPhysicsDamageTableName; }
 	void			SetBreakableModel( string_t iszModel ) { m_iszBreakableModel = iszModel; }

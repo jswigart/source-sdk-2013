@@ -289,6 +289,16 @@ public:
 
 	void		SetRollerSkin( void );
 
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_ROLLERMINE;
+		category.SetFlag( ENT_CAT_SHOOTABLE );
+		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
+
 	COutputEvent m_OnPhysGunDrop;
 	COutputEvent m_OnPhysGunPickup;
 

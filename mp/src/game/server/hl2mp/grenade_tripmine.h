@@ -37,6 +37,14 @@ public:
 	void MakeBeam( void );
 	void KillBeam( void );
 
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_WEAPON + HL2DM_CLASSEX_TRIPMINE;
+		category.SetFlag( ENT_CAT_PROJECTILE );
+		return true;
+	}
+#endif
 public:
 	EHANDLE		m_hOwner;
 

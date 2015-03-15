@@ -236,6 +236,14 @@ public:
 
 	virtual	bool		AllowedToIgnite( void ) { return true; }
 
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_ZOMBIE_FAST;
+		category.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
 public:
 	CAI_ActBusyBehavior		m_ActBusyBehavior;
 

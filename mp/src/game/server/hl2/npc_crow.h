@@ -157,6 +157,14 @@ public:
 	int			m_iBirdType;
 	bool		m_bOnJeep;
 
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_CROW;
+		category.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
 protected:
 	void SetFlyingState( FlyState_t eState );
 	inline bool IsFlying( void ) const { return GetNavType() == NAV_FLY; }

@@ -43,10 +43,21 @@ public:
 	void Use( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value );
 	virtual int	ObjectCaps( void ) { return (BaseClass::ObjectCaps() | FCAP_CONTINUOUS_USE); }
 
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_ENERGY_WALLUNIT;
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
+		return true;
+	}
+#endif
+
+	float GetJuice() const { return (float)m_iJuice; }
+	float MaxJuice() const;
 private:
 	void InputRecharge( inputdata_t &inputdata );
 	
-	float MaxJuice() const;
 	void UpdateJuice( int newJuice );
 
 	DECLARE_DATADESC();
@@ -347,10 +358,23 @@ public:
 
 	void SetInitialCharge( void );
 
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_ENERGY_WALLUNIT;
+		category.SetFlag( ENT_CAT_NOLOS );
+		category.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
+		return true;
+	}
+#endif
+
+	float GetJuice() const { return m_flJuice; }
+	float MaxJuice() const;
 private:
 	void InputRecharge( inputdata_t &inputdata );
 	void InputSetCharge( inputdata_t &inputdata );
-	float MaxJuice() const;
+
+	
 	void UpdateJuice( int newJuice );
 	void Precache( void );
 
@@ -775,3 +799,27 @@ void CNewRecharge::Off(void)
 		}
 	}
 }
+
+#ifdef USE_OMNIBOT
+bool GetWallEnergyStatus( CBaseEntity * ent, float &charge, float &maxCharge )
+{
+	int classId = 0;
+	BitFlag32 category;
+	if ( ent && ent->GetOmnibotEntityType( classId, category ) && classId == HL2DM_CLASSEX_ENERGY_WALLUNIT )
+	{
+		if ( CNewRecharge *pUnit = dynamic_cast<CNewRecharge*>( ent ) )
+		{
+			charge = pUnit->GetJuice();
+			maxCharge = pUnit->MaxJuice();
+			return true;
+		}
+		if ( CRecharge *pUnit = dynamic_cast<CRecharge*>( ent ) )
+		{
+			charge = pUnit->GetJuice();
+			maxCharge = pUnit->MaxJuice();
+			return true;
+		}
+	}
+	return false;
+}
+#endif

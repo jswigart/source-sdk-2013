@@ -97,6 +97,10 @@ ConVar sv_bonus_challenge( "sv_bonus_challenge", "0", FCVAR_REPLICATED, "Set to 
 
 static ConVar sv_maxusrcmdprocessticks( "sv_maxusrcmdprocessticks", "24", FCVAR_NOTIFY, "Maximum number of client-issued usrcmd ticks that can be replayed in packet loss conditions, 0 to allow no restrictions" );
 
+#ifdef USE_OMNIBOT
+#include "omnibot/omnibot_interface.h"
+#endif
+
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
@@ -1402,6 +1406,10 @@ int CBasePlayer::OnTakeDamage( const CTakeDamageInfo &inputInfo )
 		OnDamagedByExplosion( info );
 	}
 
+#ifdef USE_OMNIBOT
+	omnibot_interface::Notify_Hurt( this, info.GetAttacker() );
+#endif
+	
 	return fTookDamage;
 }
 
@@ -2009,7 +2017,7 @@ void CBasePlayer::WaterMove()
 
 
 // true if the player is attached to a ladder
-bool CBasePlayer::IsOnLadder( void )
+bool CBasePlayer::IsOnLadder( void ) const
 { 
 	return (GetMoveType() == MOVETYPE_LADDER);
 }
@@ -9357,6 +9365,36 @@ void CBasePlayer::AdjustDrownDmg( int nAmount )
 		m_idrowndmg = m_idrownrestored;
 	}
 }
+
+#ifdef USE_OMNIBOT
+bool CBasePlayer::GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+{
+	classId = HL2DM_CLASS_PLAYER;
+	category.SetFlag( ENT_CAT_SHOOTABLE, true );
+	category.SetFlag( ENT_CAT_PLAYER, true );
+	return true;
+}
+void CBasePlayer::GetOmnibotEntityFlags( BitFlag64 & entityFlags ) const
+{
+	entityFlags.SetFlag( ENT_FLAG_VISTEST );
+
+	if ( !IsAlive() || GetHealth() <= 0 || GetTeamNumber() == TEAM_SPECTATOR )
+		entityFlags.SetFlag( ENT_FLAG_DEAD );
+
+	if ( GetFlags() & FL_DUCKING )
+		entityFlags.SetFlag( ENT_FLAG_CROUCHED );
+
+	CBaseCombatWeapon *pWpn = GetActiveWeapon();
+	if ( pWpn && pWpn->m_bInReload )
+		entityFlags.SetFlag( ENT_FLAG_RELOADING );
+
+	if ( IsOnLadder() )
+		entityFlags.SetFlag( ENT_FLAG_ONLADDER );
+
+	if ( !IsBot() )
+		entityFlags.SetFlag( ENT_FLAG_HUMANCONTROLLED );
+}
+#endif
 
 
 

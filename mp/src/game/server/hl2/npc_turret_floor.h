@@ -177,6 +177,15 @@ public:
 		m_bHackedByAlyx = true; 
 	}
 
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = HL2DM_CLASSEX_TURRET;
+		category.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
+
 	static float	fMaxTipControllerVelocity;
 	static float	fMaxTipControllerAngularVelocity;
 

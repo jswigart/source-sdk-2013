@@ -1380,6 +1380,19 @@ public:
 
 	void InputEnable( inputdata_t &inputdata );
 	void InputDisable( inputdata_t &inputdata );
+	
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	{
+		classId = ENT_CLASS_GENERIC_PROP_STATIC;
+		category.SetFlag( ENT_CAT_OBSTACLE, true );
+		return true;
+	}
+	void GetOmnibotEntityFlags( BitFlag64 & entityFlags ) const
+	{
+		entityFlags.SetFlag( ENT_FLAG_COLLIDABLE, IsSolid() );
+	}
+#endif
 
 private:
 

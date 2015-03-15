@@ -90,7 +90,7 @@ public:
 	void VPhysicsCollision( int index, gamevcollisionevent_t *pEvent );
 
 	// Don't treat as a live target
-	virtual bool IsAlive( void ) { return false; }
+	virtual bool IsAlive( void ) const { return false; }
 
 	virtual void TraceAttack( const CTakeDamageInfo &info, const Vector &dir, trace_t *ptr, CDmgAccumulator *pAccumulator );
 
