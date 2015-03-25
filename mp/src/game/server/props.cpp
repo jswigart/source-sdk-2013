@@ -5785,51 +5785,50 @@ void CPhysicsPropRespawnable::Materialize( void )
 
 #ifdef USE_OMNIBOT
 
-bool CBreakableProp::GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+bool CBreakableProp::GetOmnibotEntityType( EntityInfo& classInfo ) const
 {
+	BaseClass::GetOmnibotEntityType( classInfo );
+
 	if ( m_explodeDamage > 0 || m_explodeRadius > 0 )
-		classId = ENT_CLASS_GENERIC_PROP_EXPLODE;
+		classInfo.mGroup = ENT_GRP_PROP_EXPLODE;
 	else
-		classId = ENT_CLASS_GENERIC_PROP;
+		classInfo.mGroup = ENT_GRP_PROP;
 
-	//category.SetFlag( ENT_CAT_PROP_PUSHABLE );
-	category.SetFlag( ENT_CAT_NOLOS );
-	category.SetFlag( ENT_CAT_OBSTACLE );
-	category.SetFlag( ENT_CAT_MOVER );
-	return true;
-}
+	//classInfo.mCategory.SetFlag( ENT_CAT_PROP_PUSHABLE );
+	classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+	classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE );
+	classInfo.mCategory.SetFlag( ENT_CAT_MOVER );
 
-void CBreakableProp::GetOmnibotEntityFlags( class BitFlag64 & entityFlags ) const
-{
 	if ( VPhysicsGetObject() != NULL && IsSolid() )
 	{
-		entityFlags.SetFlag( ENT_FLAG_COLLIDABLE );
+		classInfo.mFlags.SetFlag( ENT_FLAG_COLLIDABLE );
 	}
-}
 
-bool CPhysicsProp::GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
-{
-	if ( m_explodeDamage > 0 || m_explodeRadius > 0 )
-		classId = ENT_CLASS_GENERIC_PROP_EXPLODE;
-	else
-		classId = ENT_CLASS_GENERIC_PROP;
-
-	category.SetFlag( ENT_CAT_PROP_PUSHABLE );
-	category.SetFlag( ENT_CAT_NOLOS );
-	category.SetFlag( ENT_CAT_OBSTACLE );
-	category.SetFlag( ENT_CAT_MOVER );
-
-	if ( CanBePickedUpByPhyscannon() )
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 	return true;
 }
 
-void CPhysicsProp::GetOmnibotEntityFlags( class BitFlag64 & entityFlags ) const
+bool CPhysicsProp::GetOmnibotEntityType( EntityInfo& classInfo ) const
 {
+	BaseClass::GetOmnibotEntityType( classInfo );
+
+	if ( m_explodeDamage > 0 || m_explodeRadius > 0 )
+		classInfo.mGroup = ENT_GRP_PROP_EXPLODE;
+	else
+		classInfo.mGroup = ENT_GRP_PROP;
+
+	classInfo.mCategory.SetFlag( ENT_CAT_PROP_PUSHABLE );
+	classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+	classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE );
+	classInfo.mCategory.SetFlag( ENT_CAT_MOVER );
+
+	if ( CanBePickedUpByPhyscannon() )
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+
 	if ( VPhysicsGetObject() != NULL )
 	{
-		entityFlags.SetFlag( ENT_FLAG_COLLIDABLE );
+		classInfo.mFlags.SetFlag( ENT_FLAG_COLLIDABLE );
 	}
+	return true;
 }
 
 #endif

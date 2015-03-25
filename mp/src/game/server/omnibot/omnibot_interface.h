@@ -32,10 +32,6 @@ public:
 	static void Notify_ClientConnected( CBasePlayer *_player, bool _isbot, int _team = RANDOM_TEAM_IF_NO_TEAM, int _class = RANDOM_CLASS_IF_NO_CLASS );
 	static void Notify_ClientDisConnected( CBasePlayer *_player );
 
-	static void Notify_AddWeapon( CBaseCombatCharacter *_player, const char *_item );
-	static void Notify_RemoveWeapon( CBaseCombatCharacter *_player, const char *_item );
-	static void Notify_RemoveAllItems( CBasePlayer *_player );
-
 	static void Notify_Hurt( CBasePlayer *_player, CBaseEntity *_attacker );
 	static void Notify_Death( CBasePlayer *_player, CBaseEntity *_attacker, const char *_weapon );
 	static void Notify_KilledSomeone( CBasePlayer *_player, CBaseEntity *_victim, const char *_weapon );

@@ -53,8 +53,7 @@ public:
 	bool IsColdWorld( void );
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const;
-	virtual void GetOmnibotEntityFlags( BitFlag64 & entityFlags ) const;
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
 #endif
 
 private:

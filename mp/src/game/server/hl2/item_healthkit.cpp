@@ -32,13 +32,16 @@ public:
 	bool MyTouch( CBasePlayer *pPlayer );
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_HEALTHKIT;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_HEALTH );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_HEALTH;
+		classInfo.SetQuantity( sk_healthkit.GetFloat() );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_HEALTH );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -159,13 +162,16 @@ public:
 	}
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_HEALTHVIAL;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_HEALTH );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_HEALTH;
+		classInfo.SetQuantity( sk_healthvial.GetFloat() );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_HEALTH );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -205,11 +211,16 @@ public:
 	COutputEvent m_OnPlayerUse;
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_DISPENSER;
+		classInfo.mClassId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
+
+		classInfo.SetQuantity( m_iJuice, sk_healthcharger.GetFloat() );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
 		return true;
 	}
 #endif
@@ -483,11 +494,16 @@ public:
 	float m_flJuice;
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_DISPENSER;
+		classInfo.mClassId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
+
+		classInfo.SetQuantity( m_flJuice, sk_healthcharger.GetFloat() );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
 		return true;
 	}
 #endif
@@ -784,28 +800,3 @@ void CNewWallHealth::Off(void)
 			SetThink( NULL );
 	}
 }
-
-
-#ifdef USE_OMNIBOT
-bool GetWallHealthStatus( CBaseEntity * ent, float &charge, float &maxCharge )
-{
-	int classId = 0;
-	BitFlag32 category;
-	if ( ent && ent->GetOmnibotEntityType( classId, category ) && classId == HL2DM_CLASSEX_HEALTH_WALLUNIT )
-	{
-		if ( CNewWallHealth *pUnit = dynamic_cast<CNewWallHealth*>( ent ) )
-		{
-			charge = pUnit->m_flJuice;
-			maxCharge = sk_healthcharger.GetFloat();
-			return true;
-		}
-		if ( CWallHealth *pUnit = dynamic_cast<CWallHealth*>( ent ) )
-		{
-			charge = (float)pUnit->m_iJuice;
-			maxCharge = sk_healthcharger.GetFloat();
-			return true;
-		}
-	}
-	return false;
-}
-#endif

@@ -9367,32 +9367,33 @@ void CBasePlayer::AdjustDrownDmg( int nAmount )
 }
 
 #ifdef USE_OMNIBOT
-bool CBasePlayer::GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+bool CBasePlayer::GetOmnibotEntityType( EntityInfo& classInfo ) const
 {
-	classId = HL2DM_CLASS_PLAYER;
-	category.SetFlag( ENT_CAT_SHOOTABLE, true );
-	category.SetFlag( ENT_CAT_PLAYER, true );
-	return true;
-}
-void CBasePlayer::GetOmnibotEntityFlags( BitFlag64 & entityFlags ) const
-{
-	entityFlags.SetFlag( ENT_FLAG_VISTEST );
+	BaseClass::GetOmnibotEntityType( classInfo );
+
+	classInfo.mGroup = ENT_GRP_PLAYER;
+	classInfo.mClassId = HL2DM_CLASS_PLAYER;
+	classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE, true );
+	classInfo.mCategory.SetFlag( ENT_CAT_PLAYER, true );
+
+	classInfo.mFlags.SetFlag( ENT_FLAG_VISTEST );
 
 	if ( !IsAlive() || GetHealth() <= 0 || GetTeamNumber() == TEAM_SPECTATOR )
-		entityFlags.SetFlag( ENT_FLAG_DEAD );
+		classInfo.mFlags.SetFlag( ENT_FLAG_DEAD );
 
 	if ( GetFlags() & FL_DUCKING )
-		entityFlags.SetFlag( ENT_FLAG_CROUCHED );
+		classInfo.mFlags.SetFlag( ENT_FLAG_CROUCHED );
 
 	CBaseCombatWeapon *pWpn = GetActiveWeapon();
 	if ( pWpn && pWpn->m_bInReload )
-		entityFlags.SetFlag( ENT_FLAG_RELOADING );
+		classInfo.mFlags.SetFlag( ENT_FLAG_RELOADING );
 
 	if ( IsOnLadder() )
-		entityFlags.SetFlag( ENT_FLAG_ONLADDER );
+		classInfo.mFlags.SetFlag( ENT_FLAG_ONLADDER );
 
 	if ( !IsBot() )
-		entityFlags.SetFlag( ENT_FLAG_HUMANCONTROLLED );
+		classInfo.mFlags.SetFlag( ENT_FLAG_HUMANCONTROLLED );
+	return true;
 }
 #endif
 

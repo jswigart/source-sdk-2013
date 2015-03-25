@@ -308,10 +308,14 @@ public:
 	DEFINE_CUSTOM_AI;
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_ANTLION_GUARD;
-		category.SetFlag( ENT_CAT_SHOOTABLE );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_ANTLION_GUARD;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
 		return true;
 	}
 #endif

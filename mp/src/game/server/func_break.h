@@ -86,12 +86,15 @@ public:
 	DECLARE_DATADESC();
 
 #ifdef USE_OMNIBOT
-	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = Explodable() ? HL2DM_CLASSEX_PROPEXPLOSIVE : HL2DM_CLASSEX_PROPBREAKABLE;
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( ENT_CAT_SHOOTABLE );
-		category.SetFlag( ENT_CAT_OBSTACLE );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = Explodable() ? ENT_GRP_PROP_EXPLODE : ENT_GRP_PROP_BREAKABLE;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+		classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE );
 		return true;
 	}
 #endif

@@ -39,12 +39,14 @@ public:
 	virtual void VPhysicsCollision( int index, gamevcollisionevent_t *pEvent );
 	virtual void OnPhysGunPickup( CBasePlayer *pPhysGunUser, PhysGunPickup_t reason );
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_ITEMCRATE;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_NOLOS );
-		return true;
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		/*classInfo.mClassId = HL2DM_CLASSEX_ITEMCRATE;
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );*/
+		return false;
 	}
 #endif
 protected:

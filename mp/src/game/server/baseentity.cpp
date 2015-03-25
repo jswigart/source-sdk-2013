@@ -7297,28 +7297,25 @@ void CBaseEntity::SetCollisionBoundsFromModel()
 }
 
 #ifdef USE_OMNIBOT
-bool CBaseEntity::GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
-{
-	return false;
-}
-void CBaseEntity::GetOmnibotEntityFlags( BitFlag64 & entityFlags ) const
+bool CBaseEntity::GetOmnibotEntityType( EntityInfo& classInfo ) const
 {
 	if ( IsEffectActive( EF_NODRAW ) )
-	{
-		entityFlags.SetFlag( ENT_FLAG_DISABLED, true );
-	}
+		classInfo.mFlags.SetFlag( ENT_FLAG_DISABLED, true );
 
 	const int waterLevel = GetWaterLevel();
 	if ( waterLevel == 3 )
-		entityFlags.SetFlag( ENT_FLAG_UNDERWATER );
+		classInfo.mFlags.SetFlag( ENT_FLAG_UNDERWATER );
 	else if ( waterLevel >= 2 )
-		entityFlags.SetFlag( ENT_FLAG_INWATER );
+		classInfo.mFlags.SetFlag( ENT_FLAG_INWATER );
 
 	if ( GetFlags() & FL_ONGROUND )
-		entityFlags.SetFlag( ENT_FLAG_ONGROUND );
+		classInfo.mFlags.SetFlag( ENT_FLAG_ONGROUND );
+
+	classInfo.SetHealth( GetHealth(), GetMaxHealth() );
+
+	return false;
 }
 #endif
-
 
 //------------------------------------------------------------------------------
 // Purpose: Create an NPC of the given type

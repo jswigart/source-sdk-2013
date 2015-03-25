@@ -171,11 +171,15 @@ public:
 	}
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_MANHACK;
-		category.SetFlag( ENT_CAT_SHOOTABLE );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_MANHACK;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif

@@ -1,28 +1,29 @@
 ////////////////////////////////////////////////////////////////////////////////
-// 
-// $LastChangedBy: drevil $
-// $LastChangedDate: 2008-01-16 09:41:57 -0800 (Wed, 16 Jan 2008) $
-// $LastChangedRevision: 2334 $
+//
+// $LastChangedBy$
+// $LastChangedDate$
+// $LastChangedRevision$
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #ifndef __MESSAGEHELPER_H__
 #define __MESSAGEHELPER_H__
 
+#include <stdint.h>
 #include <assert.h>
 
 //////////////////////////////////////////////////////////////////////////
 
 struct SubscriberHandle
 {
-	union 
+	union
 	{
 		struct
 		{
-			short m_MessageId;
-			short m_SerialNum;
-		} split;		
-		int	m_Int;
+			short mMessageId;
+			short mSerialNum;
+		} split;
+		int mInt;
 	} u;
 };
 
@@ -36,35 +37,40 @@ public:
 	template<class Type>
 	Type *Get() const
 	{
-		assert(sizeof(Type) == m_BlockSize && "Memory Block Doesn't match!");
-		return static_cast<Type*>(m_pVoid);
+		assert( sizeof( Type ) == mBlockSize && "Memory Block Doesn't match!" );
+		return static_cast<Type*>( mPtr );
 	}
 
 	template<class Type>
-	void Get2(Type *&_p) const
+	void Get2( Type *&_p ) const
 	{
-		assert(sizeof(Type) == m_BlockSize && "Memory Block Doesn't match!");
-		_p = static_cast<Type*>(m_pVoid);
+		assert( sizeof( Type ) == mBlockSize && "Memory Block Doesn't match!" );
+		_p = static_cast<Type*>( mPtr );
 	}
 
-	int GetMessageId() const { return m_MessageId; }
+	int GetMessageId() const
+	{
+		return mMessageId;
+	}
 
 	operator bool() const
 	{
-		return (m_MessageId != 0);
+		return ( mMessageId != 0 );
 	}
-	
-	MessageHelper(int _msgId, void *_void = 0, obuint32 _size = 0) :
-		m_MessageId	(_msgId),
-		m_pVoid		(_void),
-		m_BlockSize	(_size)
+
+	MessageHelper( int _msgId, void *_void = 0, uint32_t _size = 0 )
+		: mMessageId( _msgId )
+		, mPtr( _void )
+		, mBlockSize( _size )
 	{
 	}
-	~MessageHelper() {};
+	~MessageHelper()
+	{
+	};
 private:
-	mutable int m_MessageId;
-	void		*m_pVoid;
-	obuint32	m_BlockSize;
+	mutable int mMessageId;
+	void*		mPtr;
+	uint32_t	mBlockSize;
 
 	MessageHelper();
 };
@@ -73,7 +79,7 @@ private:
 
 //////////////////////////////////////////////////////////////////////////
 
-typedef void (*pfnMessageFunction)(const MessageHelper &_helper);
+typedef void( *pfnMessageFunction )( const MessageHelper &_helper );
 
 //////////////////////////////////////////////////////////////////////////
 

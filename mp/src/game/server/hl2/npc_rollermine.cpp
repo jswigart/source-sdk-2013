@@ -290,11 +290,15 @@ public:
 	void		SetRollerSkin( void );
 
 #ifdef USE_OMNIBOT
-	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_ROLLERMINE;
-		category.SetFlag( ENT_CAT_SHOOTABLE );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_ROLLERMINE;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif

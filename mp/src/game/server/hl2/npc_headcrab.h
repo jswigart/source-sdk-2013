@@ -92,10 +92,14 @@ public:
 	void DropFromCeiling( void );
 
 #ifdef USE_OMNIBOT
-	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_HEADCRAB;
-		category.SetFlag( ENT_CAT_SHOOTABLE );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_HEADCRAB;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
 		return true;
 	}
 #endif
@@ -234,10 +238,14 @@ public:
 	DEFINE_CUSTOM_AI;
 
 #ifdef USE_OMNIBOT
-	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_HEADCRAB_FAST;
-		category.SetFlag( ENT_CAT_SHOOTABLE );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_HEADCRAB_FAST;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
 		return true;
 	}
 #endif

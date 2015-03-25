@@ -39,13 +39,18 @@ public:
 		return ( pHL2Player && pHL2Player->ApplyBattery() );
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_BATTERY;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_ENERGY );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		extern ConVar	sk_battery;
+
+		classInfo.mGroup = ENT_GRP_ENERGY;
+		classInfo.SetQuantity( sk_battery.GetFloat() );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_ENERGY );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif

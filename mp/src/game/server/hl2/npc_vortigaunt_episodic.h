@@ -139,10 +139,14 @@ public:
 	void	OnSquishedGrub( const CBaseEntity *pGrub );
 
 #ifdef USE_OMNIBOT
-	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_VORTIGAUNT;
-		category.SetFlag( ENT_CAT_SHOOTABLE );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_WEAPON;
+		classInfo.mClassId = HL2DM_CLASSEX_VORTIGAUNT;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
 		return true;
 	}
 #endif

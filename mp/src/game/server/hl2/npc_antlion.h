@@ -176,10 +176,14 @@ public:
 	virtual void	NotifyDeadFriend( CBaseEntity *pFriend );
 
 #ifdef USE_OMNIBOT
-	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = IsWorker() ? HL2DM_CLASSEX_ANTLION_WORKER : HL2DM_CLASSEX_ANTLION;
-		category.SetFlag( ENT_CAT_SHOOTABLE );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = IsWorker() ? HL2DM_CLASSEX_ANTLION_WORKER : HL2DM_CLASSEX_ANTLION;
+		
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
 		return true;
 	}
 #endif

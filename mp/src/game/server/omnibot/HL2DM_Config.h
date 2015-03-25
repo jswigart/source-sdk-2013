@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-// $LastChangedBy: jswigart@gmail.com $
-// $LastChangedDate: 2013-03-07 21:15:21 -0600 (Thu, 07 Mar 2013) $
-// $LastChangedRevision: 837 $
+// $LastChangedBy$
+// $LastChangedDate$
+// $LastChangedRevision$
 //
 // about: HL2DM definitions
 //
@@ -16,35 +16,41 @@
 #include "Omni-Bot_Types.h"
 #include "Omni-Bot_Events.h"
 
-typedef enum eHL2DM_Version
+enum HL2DM_Version
 {
 	HL2DM_VERSION_LATEST = 1
-} HL2DM_Version;
+};
+
+// enumerations: TraceMasks_MC
+enum TraceMasks_HL2DM
+{
+	// combo masks can be defined separately
+	HL2DM_TR_MASK_PHYSGUN = TR_MASK_SHOT | TR_MASK_GRATE, // physgun cant pull through grates
+};
 
 // typedef: HL2DM_Events
 //		Defines the events specific to the ETF game, numbered starting at the end of
 //		the global events.
-typedef enum
+enum HL2DM_Events
 {
 	HL2DM_MESSAGE_BEGIN = EVENT_NUM_EVENTS,
 
 	HL2DM_MESSAGE_END
-} HL2DM_Events;
+};
 
 // typedef: HL2DM_GameEvents
 //		Events that allow the bot to query for information from the game.
-typedef enum
+enum MC_GameMessage
 {
 	HL2DM_MSG_START = GEN_MSG_END,
 	HL2DM_MSG_CAN_PHYSPICKUP,
 	HL2DM_MSG_PHYSGUNINFO,
-	HL2DM_MSG_CHARGER_STATUS,
 	HL2DM_MSG_END
-} MC_GameMessage;
+};
 
 // typedef: HL2DM_Weapon
 //		The available weapons for this gametype
-typedef enum
+enum HL2DM_Weapon
 {
 	HL2DM_WP_NONE = INVALID_WEAPON,
 	HL2DM_WP_CROWBAR,
@@ -63,21 +69,18 @@ typedef enum
 	HL2DM_WP_FLAREGUN,
 	HL2DM_WP_ANNABELLE,
 	HL2DM_WP_BUGBAIT,
+	HL2DM_WP_SNIPER,
 	HL2DM_WP_MAX
-} HL2DM_Weapon;
+};
 
 // typedef: HL2DM_PlayerClass_enum
 //		The available classes for this gametype
-typedef enum
+enum HL2DM_PlayerClass
 {
-	HL2DM_CLASS_NULL = 0,
+	HL2DM_CLASS_NULL = ENT_CLASS_NONE,
 	HL2DM_CLASS_PLAYER,
 	HL2DM_CLASS_MAX,
 	HL2DM_CLASS_ANY = HL2DM_CLASS_MAX,
-
-	// weapon pickups
-	HL2DM_CLASSEX_WEAPON,
-	HL2DM_CLASSEX_WEAPON_LAST = HL2DM_CLASSEX_WEAPON + HL2DM_WP_MAX,
 
 	HL2DM_CLASSEX_ZOMBIE,
 	HL2DM_CLASSEX_ZOMBIE_FAST,
@@ -92,14 +95,14 @@ typedef enum
 	HL2DM_CLASSEX_CROW,
 	HL2DM_CLASSEX_ROLLERMINE,
 
-	HL2DM_CLASSEX_PROPBREAKABLE,
-	HL2DM_CLASSEX_PROPEXPLOSIVE,
-
-	HL2DM_CLASSEX_HEALTHKIT,
-	HL2DM_CLASSEX_HEALTHVIAL,
 	HL2DM_CLASSEX_HEALTH_WALLUNIT,
 	HL2DM_CLASSEX_ENERGY_WALLUNIT,
-	HL2DM_CLASSEX_BATTERY,
+
+	HL2DM_CLASSEX_TRIPMINE,
+	HL2DM_CLASSEX_MAGMINE,
+	HL2DM_CLASSEX_TURRET,
+
+	/*
 	HL2DM_CLASSEX_POWERCUBE,
 	HL2DM_CLASSEX_ITEMCRATE,
 	HL2DM_CLASSEX_PISTOL_AMMO,
@@ -119,24 +122,20 @@ typedef enum
 	HL2DM_CLASSEX_SHOTGUN_AMMO,
 	HL2DM_CLASSEX_AR2_ALTFIRE_AMMO,
 	HL2DM_CLASSEX_SMG_ALTFIRE_AMMO,
-	HL2DM_CLASSEX_GRENADE_AMMO,
-
-	HL2DM_CLASSEX_TRIPMINE,
-	HL2DM_CLASSEX_MAGMINE,
-	HL2DM_CLASSEX_TURRET,
+	HL2DM_CLASSEX_GRENADE_AMMO,*/
 
 	HL2DM_NUM_CLASSES
-} HL2DM_PlayerClass_enum;
+};
 
 // typedef: HL2DM_Team
 //		The available teams for this gametype
-typedef enum
+enum HL2DM_Team
 {
 	HL2DM_TEAM_NONE = OB_TEAM_NONE,
 	HL2DM_TEAM_COMBINE = 0,
 	HL2DM_TEAM_REBELS,
 	HL2DM_TEAM_MAX
-} HL2DM_Team;
+};
 
 // enumerations: HL2DM_EntityCategory
 enum HL2DM_EntityCategory

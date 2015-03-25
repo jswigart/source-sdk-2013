@@ -179,7 +179,7 @@ public:
 	virtual float		GetFogObscuredRatio( float range ) const;		///< return 0-1 ratio where zero is not obscured, and 1 is completely obscured
 
 #ifdef USE_OMNIBOT
-	virtual void GetOmnibotEntityFlags( BitFlag64 & entityFlags ) const;
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
 #endif
 
 	// -----------------------

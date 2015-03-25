@@ -1936,11 +1936,7 @@ void CBaseCombatCharacter::Weapon_Drop( CBaseCombatWeapon *pWeapon, const Vector
 			pWeapon->AddEffects( EF_ITEM_BLINK );
 		}
 	}
-
-#ifdef USE_OMNIBOT
-	omnibot_interface::Notify_RemoveWeapon( this, pWeapon->GetClassname() );
-#endif
-
+	
 	if ( IsPlayer() )
 	{
 		Vector vThrowPos = Weapon_ShootPosition() - Vector(0,0,12);
@@ -2174,10 +2170,6 @@ void CBaseCombatCharacter::Weapon_Equip( CBaseCombatWeapon *pWeapon )
 
 	// Pass the lighting origin over to the weapon if we have one
 	pWeapon->SetLightingOriginRelative( GetLightingOriginRelative() );
-
-#ifdef USE_OMNIBOT
-	omnibot_interface::Notify_AddWeapon( this, pWeapon->GetClassname() );
-#endif
 }
 
 //-----------------------------------------------------------------------------
@@ -2354,10 +2346,6 @@ void CBaseCombatCharacter::RemoveAllWeapons()
 	{
 		if ( m_hMyWeapons[i] )
 		{
-#ifdef USE_OMNIBOT
-			omnibot_interface::Notify_RemoveWeapon( ToBasePlayer( this ), m_hMyWeapons[ i ]->GetClassname() );
-#endif
-
 			m_hMyWeapons[i]->Delete( );
 			m_hMyWeapons.Set( i, NULL );
 		}
@@ -3610,20 +3598,20 @@ float CBaseCombatCharacter::GetTimeSinceLastInjury( int team /*= TEAM_ANY */ ) c
 
 
 #ifdef USE_OMNIBOT
-void CBaseCombatCharacter::GetOmnibotEntityFlags( BitFlag64 & entityFlags ) const
+bool CBaseCombatCharacter::GetOmnibotEntityType( EntityInfo& classInfo ) const
 {
-	CBaseFlex::GetOmnibotEntityFlags( entityFlags );
-
-	entityFlags.SetFlag( ENT_FLAG_VISTEST );
-
+	BaseClass::GetOmnibotEntityType( classInfo );
+	
+	classInfo.mFlags.SetFlag( ENT_FLAG_VISTEST );
 	if ( !IsAlive() || GetHealth() <= 0 || GetTeamNumber() == TEAM_SPECTATOR )
-		entityFlags.SetFlag( ENT_FLAG_DEAD );
-
+		classInfo.mFlags.SetFlag( ENT_FLAG_DEAD );
 	if ( GetFlags() & FL_DUCKING )
-		entityFlags.SetFlag( ENT_FLAG_CROUCHED );
+		classInfo.mFlags.SetFlag( ENT_FLAG_CROUCHED );
 
 	CBaseCombatWeapon *pWpn = GetActiveWeapon();
 	if ( pWpn && pWpn->m_bInReload )
-		entityFlags.SetFlag( ENT_FLAG_RELOADING );
+		classInfo.mFlags.SetFlag( ENT_FLAG_RELOADING );
+
+	return true;
 }
 #endif

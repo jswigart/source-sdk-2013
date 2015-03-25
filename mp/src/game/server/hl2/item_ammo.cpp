@@ -68,13 +68,17 @@ public:
 	}
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_PISTOL_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_PISTOL;
+		classInfo.SetQuantity( SIZE_AMMO_PISTOL );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -114,13 +118,17 @@ public:
 	}
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_LARGE_PISTOL_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_PISTOL;
+		classInfo.SetQuantity( SIZE_AMMO_PISTOL_LARGE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -159,13 +167,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_SMG_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_SMG;
+		classInfo.SetQuantity( SIZE_AMMO_SMG1 );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -205,13 +217,17 @@ public:
 	}
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_LARGE_SMG_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_SMG;
+		classInfo.SetQuantity( SIZE_AMMO_SMG1_LARGE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -250,13 +266,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_AR2_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_AR2;
+		classInfo.SetQuantity( SIZE_AMMO_AR2 );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -295,13 +315,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_LARGE_AR2_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_AR2;
+		classInfo.SetQuantity( SIZE_AMMO_AR2_LARGE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -342,13 +366,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_357_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_REVOLVER;
+		classInfo.SetQuantity( SIZE_AMMO_357 );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -388,13 +416,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_LARGE_357_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_REVOLVER;
+		classInfo.SetQuantity( SIZE_AMMO_357_LARGE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -435,13 +467,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_CROSSBOW_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_CROSSBOW;
+		classInfo.SetQuantity( SIZE_AMMO_CROSSBOW );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -480,13 +516,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_LARGE_FLARE_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_FLAREGUN;
+		classInfo.SetQuantity( 1 );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -526,13 +566,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_FLARE_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_FLAREGUN;
+		classInfo.SetQuantity( SIZE_BOX_FLARE_ROUNDS );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -570,13 +614,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_RPG_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_RPG;
+		classInfo.SetQuantity( SIZE_AMMO_RPG_ROUND );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -616,13 +664,17 @@ public:
 	}
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_AR2GREN_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_SMG;
+		classInfo.SetQuantity( SIZE_AMMO_SMG1_GRENADE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -663,13 +715,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_SNIPER_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_SNIPER;
+		classInfo.SetQuantity( SIZE_BOX_SNIPER_ROUNDS );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -708,13 +764,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_SHOTGUN_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_SHOTGUN;
+		classInfo.SetQuantity( SIZE_AMMO_BUCKSHOT );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -755,13 +815,17 @@ public:
 		return false;
 	}
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_AR2_ALTFIRE_AMMO;
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO2;
+		classInfo.mClassId = HL2DM_WP_AR2;
+		classInfo.SetQuantity( SIZE_AMMO_AR2_ALTFIRE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif
@@ -814,48 +878,53 @@ public:
 	
 	virtual int OnTakeDamage( const CTakeDamageInfo &info );
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.SetQuantity( m_nAmmoAmounts[ m_nAmmoType ] );
 		switch ( m_nAmmoType )
 		{
 			case AMMOCRATE_SMALL_ROUNDS:
-				classId = HL2DM_CLASSEX_LARGE_PISTOL_AMMO;
+				classInfo.mClassId = HL2DM_WP_PISTOL;
 				break;
 			case AMMOCRATE_MEDIUM_ROUNDS:
-				classId = HL2DM_CLASSEX_LARGE_SMG_AMMO;
+				classInfo.mClassId = HL2DM_WP_SMG;
 				break;
 			case AMMOCRATE_LARGE_ROUNDS:
-				classId = HL2DM_CLASSEX_LARGE_AR2_AMMO;
+				classInfo.mClassId = HL2DM_WP_AR2;
 				break;
 			case AMMOCRATE_RPG_ROUNDS:
-				classId = HL2DM_CLASSEX_RPG_AMMO;
+				classInfo.mClassId = HL2DM_WP_RPG;
 				break;
 			case AMMOCRATE_BUCKSHOT:
-				classId = HL2DM_CLASSEX_SHOTGUN_AMMO;
+				classInfo.mClassId = HL2DM_WP_SHOTGUN;
 				break;
 			case AMMOCRATE_357:
-				classId = HL2DM_CLASSEX_LARGE_357_AMMO;
+				classInfo.mClassId = HL2DM_WP_REVOLVER;
 				break;
 			case AMMOCRATE_GRENADES:
-				classId = HL2DM_CLASSEX_GRENADE_AMMO;
+				classInfo.mClassId = HL2DM_WP_GRENADE;
 				break;
 			case AMMOCRATE_CROSSBOW:
-				classId = HL2DM_CLASSEX_CROSSBOW_AMMO;
+				classInfo.mClassId = HL2DM_WP_CROSSBOW;
 				break;
 			case AMMOCRATE_AR2_ALTFIRE:
-				classId = HL2DM_CLASSEX_AR2_ALTFIRE_AMMO;
+				classInfo.mClassId = HL2DM_WP_AR2;
+				classInfo.mGroup = ENT_GRP_AMMO2;
 				break;
 			case AMMOCRATE_SMG_ALTFIRE:
-				classId = HL2DM_CLASSEX_SMG_ALTFIRE_AMMO;
+				classInfo.mClassId = HL2DM_WP_SMG;
+				classInfo.mGroup = ENT_GRP_AMMO2;
 				break;
 			default:
 				return false;
 		}
 
-		category.SetFlag( ENT_CAT_PICKUP );
-		category.SetFlag( ENT_CAT_PICKUP_AMMO );
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif

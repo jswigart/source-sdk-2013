@@ -102,8 +102,7 @@ public:
 	void	DisableAutoFade();
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const;
-	virtual void GetOmnibotEntityFlags( class BitFlag64 & entityFlags ) const;
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
 #endif
 
 public:
@@ -385,8 +384,7 @@ public:
 	float	GetMassScale( void ) { return m_massScale; }
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const;
-	virtual void GetOmnibotEntityFlags( class BitFlag64 & entityFlags ) const;
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
 #endif
 
 private:

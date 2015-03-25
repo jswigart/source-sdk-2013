@@ -895,8 +895,7 @@ public:
 	virtual bool	PassesDamageFilter( const CTakeDamageInfo &info );
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, class BitFlag32 & category ) const;
-	virtual void GetOmnibotEntityFlags( class BitFlag64 & entityFlags ) const;
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
 #endif
 
 protected:

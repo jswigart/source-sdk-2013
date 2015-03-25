@@ -39,10 +39,14 @@ public:
 	Vector			m_vLastPosition;
 
 #ifdef USE_OMNIBOT
-	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_WEAPON + HL2DM_CLASSEX_TRIPMINE;
-		category.SetFlag( ENT_CAT_PROJECTILE );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_PROJECTILE;
+		classInfo.mClassId = HL2DM_CLASSEX_TRIPMINE;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PROJECTILE );
 		return true;
 	}
 #endif

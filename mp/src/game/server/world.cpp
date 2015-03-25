@@ -733,18 +733,14 @@ bool CWorld::IsColdWorld( void )
 }
 
 #ifdef USE_OMNIBOT
-bool CWorld::GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+bool CWorld::GetOmnibotEntityType( EntityInfo& classInfo ) const
 {
-	CBaseEntity::GetOmnibotEntityType( classId, category );
+	BaseClass::GetOmnibotEntityType( classInfo );
 
-	category.SetFlag( ENT_CAT_NOLOS );
-	category.SetFlag( ENT_CAT_OBSTACLE );
+	classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+	classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE );
+
+	classInfo.mFlags.SetFlag( ENT_FLAG_COLLIDABLE );
 	return true;
-}
-void CWorld::GetOmnibotEntityFlags( BitFlag64 & entityFlags ) const
-{
-	CBaseEntity::GetOmnibotEntityFlags( entityFlags );
-
-	entityFlags.SetFlag( ENT_FLAG_COLLIDABLE );
 }
 #endif

@@ -1382,15 +1382,15 @@ public:
 	void InputDisable( inputdata_t &inputdata );
 	
 #ifdef USE_OMNIBOT
-	bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = ENT_CLASS_GENERIC_PROP_STATIC;
-		category.SetFlag( ENT_CAT_OBSTACLE, true );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_PROP;
+		classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE, true );
+
+		classInfo.mFlags.SetFlag( ENT_FLAG_COLLIDABLE, IsSolid() );
 		return true;
-	}
-	void GetOmnibotEntityFlags( BitFlag64 & entityFlags ) const
-	{
-		entityFlags.SetFlag( ENT_FLAG_COLLIDABLE, IsSolid() );
 	}
 #endif
 

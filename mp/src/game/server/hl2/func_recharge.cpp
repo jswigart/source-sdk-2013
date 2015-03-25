@@ -44,11 +44,16 @@ public:
 	virtual int	ObjectCaps( void ) { return (BaseClass::ObjectCaps() | FCAP_CONTINUOUS_USE); }
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_ENERGY_WALLUNIT;
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_DISPENSER;
+		classInfo.mClassId = HL2DM_CLASSEX_ENERGY_WALLUNIT;
+		classInfo.SetQuantity( GetJuice(), MaxJuice() );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
 		return true;
 	}
 #endif
@@ -359,11 +364,16 @@ public:
 	void SetInitialCharge( void );
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_ENERGY_WALLUNIT;
-		category.SetFlag( ENT_CAT_NOLOS );
-		category.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_DISPENSER;
+		classInfo.mClassId = HL2DM_CLASSEX_ENERGY_WALLUNIT;
+		classInfo.SetQuantity( GetJuice(), MaxJuice() );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
 		return true;
 	}
 #endif
@@ -799,27 +809,3 @@ void CNewRecharge::Off(void)
 		}
 	}
 }
-
-#ifdef USE_OMNIBOT
-bool GetWallEnergyStatus( CBaseEntity * ent, float &charge, float &maxCharge )
-{
-	int classId = 0;
-	BitFlag32 category;
-	if ( ent && ent->GetOmnibotEntityType( classId, category ) && classId == HL2DM_CLASSEX_ENERGY_WALLUNIT )
-	{
-		if ( CNewRecharge *pUnit = dynamic_cast<CNewRecharge*>( ent ) )
-		{
-			charge = pUnit->GetJuice();
-			maxCharge = pUnit->MaxJuice();
-			return true;
-		}
-		if ( CRecharge *pUnit = dynamic_cast<CRecharge*>( ent ) )
-		{
-			charge = pUnit->GetJuice();
-			maxCharge = pUnit->MaxJuice();
-			return true;
-		}
-	}
-	return false;
-}
-#endif

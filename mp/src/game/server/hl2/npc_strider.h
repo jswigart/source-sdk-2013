@@ -341,10 +341,14 @@ public:
 #endif // HL2_EPISODIC
 
 #ifdef USE_OMNIBOT
-	virtual bool GetOmnibotEntityType( int & classId, BitFlag32 & category ) const
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classId = HL2DM_CLASSEX_HUNTER;
-		category.SetFlag( ENT_CAT_SHOOTABLE );
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_HUNTER;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
 		return true;
 	}
 #endif

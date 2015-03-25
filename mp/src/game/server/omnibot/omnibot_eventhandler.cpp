@@ -29,8 +29,6 @@ void event_ServerPlayerInfo(IGameEvent *_event);
 void event_ServerPlayerActivate(IGameEvent *_event);
 void event_ServerPlayerSay(IGameEvent *_event);
 void event_ServerPlayerSayTeam(IGameEvent *_event);
-void event_ServerPlayerAddItem(IGameEvent *_event);
-void event_ServerPlayerRemoveItem(IGameEvent *_event);
 
 void event_GameTeamInfo(IGameEvent *_event);
 void event_GameTeamScore(IGameEvent *_event);
@@ -64,8 +62,6 @@ const EventCallback EVENT_CALLBACKS[] =
 	{ "player_activate", event_ServerPlayerActivate },
 	{ "player_say", event_ServerPlayerSay },
 	{ "player_sayteam", event_ServerPlayerSayTeam },
-	{ "player_additem", event_ServerPlayerAddItem },
-	{ "player_removeitem", event_ServerPlayerRemoveItem },
 	
 	// Game Events
 	{ "team_info", event_GameTeamInfo },
@@ -360,37 +356,6 @@ void event_ServerPlayerSayTeam(IGameEvent *_event)
 		const char *pMsg = _event->GetString("text", "");
 		if(pMsg)
 			omnibot_interface::Notify_TeamChatMsg( pPlayer, pMsg );
-	}
-}
-
-void event_ServerPlayerAddItem(IGameEvent *_event)
-{
-	CBasePlayer *pPlayer = UTIL_PlayerByUserId(_event->GetInt("userid"));
-	if(pPlayer)
-	{
-		const char *pItemName = _event->GetString("item", "");
-		if(pItemName)
-			omnibot_interface::Notify_AddWeapon( pPlayer, pItemName );
-	}
-}
-
-void event_ServerPlayerRemoveItem(IGameEvent *_event)
-{
-	CBasePlayer *pPlayer = UTIL_PlayerByUserId(_event->GetInt("userid"));
-	if(pPlayer)
-	{
-		const char *pItemName = _event->GetString("item", "");
-		if(pItemName)
-			omnibot_interface::Notify_RemoveWeapon( pPlayer, pItemName );
-	}
-}
-
-void event_ServerPlayerRemoveAllItems(IGameEvent *_event)
-{
-	CBasePlayer *pPlayer = UTIL_PlayerByUserId(_event->GetInt("userid"));
-	if(pPlayer)
-	{
-		omnibot_interface::Notify_RemoveAllItems( pPlayer );
 	}
 }
 
