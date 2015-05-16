@@ -30,6 +30,19 @@ public:
 	void Spawn( void );
 	void Precache( void );
 	bool MyTouch( CBasePlayer *pPlayer );
+
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_HEALTH;
+		//classInfo.mClassId = ;
+		classInfo.SetQuantity( sk_healthkit.GetFloat() );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_HEALTH );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 
 LINK_ENTITY_TO_CLASS( item_healthkit, CHealthKit );
@@ -145,6 +158,19 @@ public:
 
 		return false;
 	}
+
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_HEALTH;
+		//classInfo.mClassId = ;
+		classInfo.SetQuantity( sk_healthvial.GetFloat() );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_ENERGY );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 
 LINK_ENTITY_TO_CLASS( item_healthvial, CHealthVial );
@@ -179,6 +205,18 @@ public:
 
 	COutputFloat m_OutRemainingHealth;
 	COutputEvent m_OnPlayerUse;
+
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_DISPENSER;
+		classInfo.mClassId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
+		classInfo.SetQuantity( m_iJuice, sk_healthcharger.GetFloat() );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_HEALTH );
+		return true;
+	}
+#endif
 
 	DECLARE_DATADESC();
 };
@@ -447,6 +485,18 @@ public:
 	void StudioFrameAdvance ( void );
 
 	float m_flJuice;
+
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_DISPENSER;
+		classInfo.mClassId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
+		classInfo.SetQuantity( m_flJuice, sk_healthcharger.GetFloat() );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_HEALTH );
+		return true;
+	}
+#endif
 
 	DECLARE_DATADESC();
 };
@@ -740,4 +790,3 @@ void CNewWallHealth::Off(void)
 			SetThink( NULL );
 	}
 }
-

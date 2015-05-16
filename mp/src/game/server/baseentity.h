@@ -21,6 +21,8 @@
 #include "shareddefs.h"
 #include "engine/ivmodelinfo.h"
 
+#include "../omnibot/omnibot_interface.h"
+
 class CDamageModifier;
 class CDmgAccumulator;
 
@@ -892,6 +894,9 @@ public:
 	void			DispatchTraceAttack( const CTakeDamageInfo &info, const Vector &vecDir, trace_t *ptr, CDmgAccumulator *pAccumulator = NULL );
 	virtual bool	PassesDamageFilter( const CTakeDamageInfo &info );
 
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
+#endif
 
 protected:
 	virtual void	TraceAttack( const CTakeDamageInfo &info, const Vector &vecDir, trace_t *ptr, CDmgAccumulator *pAccumulator = NULL );
@@ -909,7 +914,7 @@ public:
 
 	virtual int		TakeHealth( float flHealth, int bitsDamageType );
 
-	virtual bool	IsAlive( void );
+	virtual bool	IsAlive( void ) const;
 	// Entity killed (only fired once)
 	virtual void	Event_Killed( const CTakeDamageInfo &info );
 	

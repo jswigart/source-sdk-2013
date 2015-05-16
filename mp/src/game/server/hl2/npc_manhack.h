@@ -170,6 +170,19 @@ public:
 		m_iHealth = 0;
 	}
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_MANHACK;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 
 	DEFINE_CUSTOM_AI;
 

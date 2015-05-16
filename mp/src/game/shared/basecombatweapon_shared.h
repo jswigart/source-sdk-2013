@@ -444,6 +444,9 @@ public:
 
 	virtual CDmgAccumulator	*GetDmgAccumulator( void ) { return NULL; }
 
+#ifdef USE_OMNIBOT
+	virtual bool BotCanPickUpObject( CBaseEntity * ent ) { return false; }
+#endif
 // Client only methods
 #else
 

@@ -340,6 +340,19 @@ public:
 	void	StriderBusterDetached( CBaseEntity *pAttached );
 #endif // HL2_EPISODIC
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_HUNTER;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
+
 public:
 
 	//---------------------------------

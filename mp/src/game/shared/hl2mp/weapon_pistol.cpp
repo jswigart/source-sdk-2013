@@ -88,7 +88,21 @@ public:
 #ifndef CLIENT_DLL
 	DECLARE_ACTTABLE();
 #endif
+	
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
 
+		classInfo.mGroup = ENT_GRP_WEAPON;
+		classInfo.mClassId = HL2DM_WP_PISTOL;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_WEAPON );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
+	
 private:
 	CNetworkVar( float,	m_flSoonestPrimaryAttack );
 	CNetworkVar( float,	m_flLastAttackTime );

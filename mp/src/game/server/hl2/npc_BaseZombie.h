@@ -236,6 +236,19 @@ public:
 
 	virtual	bool		AllowedToIgnite( void ) { return true; }
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_ZOMBIE_FAST;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
+
 public:
 	CAI_ActBusyBehavior		m_ActBusyBehavior;
 

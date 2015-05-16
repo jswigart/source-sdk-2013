@@ -41,7 +41,7 @@ public:
 
 	DECLARE_SERVERCLASS();
 	// Don't treat as a live target
-	virtual bool IsAlive( void ) { return false; }
+	virtual bool IsAlive( void ) const { return false; }
 	
 	virtual void TraceAttack( const CTakeDamageInfo &info, const Vector &dir, trace_t *ptr, CDmgAccumulator *pAccumulator );
 	virtual bool TestCollision( const Ray_t &ray, unsigned int mask, trace_t& trace );

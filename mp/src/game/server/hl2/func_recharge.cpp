@@ -43,10 +43,25 @@ public:
 	void Use( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value );
 	virtual int	ObjectCaps( void ) { return (BaseClass::ObjectCaps() | FCAP_CONTINUOUS_USE); }
 
+
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_DISPENSER;
+		classInfo.mClassId = HL2DM_CLASSEX_ENERGY_WALLUNIT;
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
+		classInfo.SetQuantity( GetJuice(), MaxJuice() );
+		return true;
+	}
+#endif
+	
+	float GetJuice() const { return (float)m_iJuice; }
+	float MaxJuice() const;
 private:
 	void InputRecharge( inputdata_t &inputdata );
-	
-	float MaxJuice() const;
+		
 	void UpdateJuice( int newJuice );
 
 	DECLARE_DATADESC();
@@ -347,10 +362,26 @@ public:
 
 	void SetInitialCharge( void );
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_DISPENSER;
+		classInfo.mClassId = HL2DM_CLASSEX_ENERGY_WALLUNIT;
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
+		classInfo.SetQuantity( GetJuice(), MaxJuice() );
+		return true;
+	}
+#endif
+
+	float GetJuice() const { return m_flJuice; }
+	float MaxJuice() const;
 private:
 	void InputRecharge( inputdata_t &inputdata );
 	void InputSetCharge( inputdata_t &inputdata );
-	float MaxJuice() const;
+
+	
 	void UpdateJuice( int newJuice );
 	void Precache( void );
 

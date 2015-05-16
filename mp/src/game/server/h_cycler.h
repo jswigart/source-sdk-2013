@@ -28,7 +28,7 @@ public:
 	void Use ( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value );
 
 	// Don't treat as a live target
-	virtual bool IsAlive( void ) { return false; }
+	virtual bool IsAlive( void ) const { return false; }
 
 	// Inputs
 	void	InputSetSequence( inputdata_t &inputdata );

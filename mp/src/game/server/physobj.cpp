@@ -588,7 +588,7 @@ void CPhysBox::Use( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useT
 
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
-bool CPhysBox::CanBePickedUpByPhyscannon()
+bool CPhysBox::CanBePickedUpByPhyscannon() const
 {
 	if ( HasSpawnFlags( SF_PHYSBOX_NEVER_PICK_UP ) )
 		return false;

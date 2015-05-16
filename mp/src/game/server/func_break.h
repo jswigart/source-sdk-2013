@@ -57,8 +57,7 @@ public:
 	void InputRemoveHealth( inputdata_t &inputdata );
 	void InputSetHealth( inputdata_t &inputdata );
 	void InputSetMass( inputdata_t &inputdata );
-
-
+	
 	// breakables use an overridden takedamage
 	virtual int OnTakeDamage( const CTakeDamageInfo &info );
 
@@ -73,7 +72,7 @@ public:
 	virtual void	Die( void );
 	void			ResetOnGroundFlags(void);
 
-	inline bool		Explodable( void ) { return GetExplosiveRadius() > 0; }
+	inline bool		Explodable( void ) const { return GetExplosiveRadius() > 0; }
 
 	Materials		GetMaterialType( void ) { return m_Material; }
 	static void MaterialSoundRandom( int entindex, Materials soundMaterial, float volume );
@@ -85,6 +84,10 @@ public:
 
 	DECLARE_DATADESC();
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
+#endif
+
 public:
 // IBreakableWithPropData
 	void			SetDmgModBullet( float flDmgMod ) { m_flDmgModBullet = flDmgMod; }
@@ -95,8 +98,8 @@ public:
 	float			GetDmgModExplosive( void ) { return m_flDmgModExplosive; }
 	void			SetExplosiveRadius( float flRadius ) { m_explodeRadius = flRadius; }
 	void			SetExplosiveDamage( float flDamage ) { m_ExplosionMagnitude = flDamage; }
-	float			GetExplosiveRadius( void ) { return m_explodeRadius; }
-	float			GetExplosiveDamage( void ) { return m_ExplosionMagnitude; }
+	float			GetExplosiveRadius( void ) const { return m_explodeRadius; }
+	float			GetExplosiveDamage( void ) const { return m_ExplosionMagnitude; }
 	void			SetPhysicsDamageTable( string_t iszTableName ) { m_iszPhysicsDamageTableName = iszTableName; }
 	string_t		GetPhysicsDamageTable( void ) { return m_iszPhysicsDamageTableName; }
 	void			SetBreakableModel( string_t iszModel ) { m_iszBreakableModel = iszModel; }

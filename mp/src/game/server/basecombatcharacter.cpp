@@ -54,6 +54,10 @@
 	#include "portal_shareddefs.h"
 #endif
 
+#if(USE_OMNIBOT)
+#include "omnibot/omnibot_interface.h"
+#endif
+
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
@@ -747,6 +751,8 @@ CBaseCombatCharacter::CBaseCombatCharacter( void )
 #ifdef GLOWS_ENABLE
 	m_bGlowEnabled.Set( false );
 #endif // GLOWS_ENABLE
+
+	m_bIsOmnibot = false;
 }
 
 //------------------------------------------------------------------------------
@@ -1930,7 +1936,7 @@ void CBaseCombatCharacter::Weapon_Drop( CBaseCombatWeapon *pWeapon, const Vector
 			pWeapon->AddEffects( EF_ITEM_BLINK );
 		}
 	}
-
+	
 	if ( IsPlayer() )
 	{
 		Vector vThrowPos = Weapon_ShootPosition() - Vector(0,0,12);
@@ -3589,4 +3595,3 @@ float CBaseCombatCharacter::GetTimeSinceLastInjury( int team /*= TEAM_ANY */ ) c
 
 	return never;
 }
-

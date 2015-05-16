@@ -66,6 +66,20 @@ public:
 		}
 		return false;
 	}
+
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_PISTOL;
+		classInfo.SetQuantity( SIZE_AMMO_PISTOL );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
+
 };
 LINK_ENTITY_TO_CLASS(item_box_srounds, CItem_BoxSRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_pistol, CItem_BoxSRounds);
@@ -100,6 +114,19 @@ public:
 		}
 		return false;
 	}
+
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_PISTOL;
+		classInfo.SetQuantity( SIZE_AMMO_PISTOL_LARGE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_large_box_srounds, CItem_LargeBoxSRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_pistol_large, CItem_LargeBoxSRounds);
@@ -134,6 +161,19 @@ public:
 		}
 		return false;
 	}
+
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_SMG;
+		classInfo.SetQuantity( SIZE_AMMO_SMG1 );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_box_mrounds, CItem_BoxMRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_smg1, CItem_BoxMRounds);
@@ -168,6 +208,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_SMG;
+		classInfo.SetQuantity( SIZE_AMMO_SMG1_LARGE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_large_box_mrounds, CItem_LargeBoxMRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_smg1_large, CItem_LargeBoxMRounds);
@@ -202,6 +254,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_AR2;
+		classInfo.SetQuantity( SIZE_AMMO_AR2 );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_box_lrounds, CItem_BoxLRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_ar2, CItem_BoxLRounds);
@@ -236,6 +300,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_AR2;
+		classInfo.SetQuantity( SIZE_AMMO_AR2_LARGE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_large_box_lrounds, CItem_LargeBoxLRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_ar2_large, CItem_LargeBoxLRounds);
@@ -272,6 +348,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_REVOLVER;
+		classInfo.SetQuantity( SIZE_AMMO_357 );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_ammo_357, CItem_Box357Rounds);
 
@@ -307,6 +395,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_REVOLVER;
+		classInfo.SetQuantity( SIZE_AMMO_357_LARGE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_ammo_357_large, CItem_LargeBox357Rounds);
 
@@ -343,6 +443,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_CROSSBOW;
+		classInfo.SetQuantity( SIZE_AMMO_CROSSBOW );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_ammo_crossbow, CItem_BoxXBowRounds);
 
@@ -377,6 +489,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_FLAREGUN;
+		classInfo.SetQuantity( 1 );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_flare_round, CItem_FlareRound);
 
@@ -412,6 +536,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_FLAREGUN;
+		classInfo.SetQuantity( SIZE_BOX_FLARE_ROUNDS );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_box_flare_rounds, CItem_BoxFlareRounds);
 
@@ -445,6 +581,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_RPG;
+		classInfo.SetQuantity( SIZE_AMMO_RPG_ROUND );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS( item_ml_grenade, CItem_RPG_Round );
 LINK_ENTITY_TO_CLASS( item_rpg_round, CItem_RPG_Round );
@@ -479,6 +627,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO2;
+		classInfo.mClassId = HL2DM_WP_SMG;
+		classInfo.SetQuantity( SIZE_AMMO_SMG1_GRENADE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_ar2_grenade, CItem_AR2_Grenade);
 LINK_ENTITY_TO_CLASS(item_ammo_smg1_grenade, CItem_AR2_Grenade);
@@ -515,6 +675,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_SNIPER;
+		classInfo.SetQuantity( SIZE_BOX_SNIPER_ROUNDS );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_box_sniper_rounds, CItem_BoxSniperRounds);
 
@@ -549,6 +721,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mClassId = HL2DM_WP_SHOTGUN;
+		classInfo.SetQuantity( SIZE_AMMO_BUCKSHOT );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 LINK_ENTITY_TO_CLASS(item_box_buckshot, CItem_BoxBuckshot);
 
@@ -585,6 +769,18 @@ public:
 		}
 		return false;
 	}
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO2;
+		classInfo.mClassId = HL2DM_WP_AR2;
+		classInfo.SetQuantity( SIZE_AMMO_AR2_ALTFIRE );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
 };
 
 LINK_ENTITY_TO_CLASS( item_ammo_ar2_altfire, CItem_AR2AltFireRound );
@@ -633,7 +829,57 @@ public:
 	void	CrateThink( void );
 	
 	virtual int OnTakeDamage( const CTakeDamageInfo &info );
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_AMMO1;
+		
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		classInfo.SetQuantity( m_nAmmoAmounts[ m_nAmmoType ] );
 
+		switch ( m_nAmmoType )
+		{
+			case AMMOCRATE_SMALL_ROUNDS:
+				classInfo.mClassId = HL2DM_WP_PISTOL;
+				break;
+			case AMMOCRATE_MEDIUM_ROUNDS:
+				classInfo.mClassId = HL2DM_WP_SMG;
+				break;
+			case AMMOCRATE_LARGE_ROUNDS:
+				classInfo.mClassId = HL2DM_WP_AR2;
+				break;
+			case AMMOCRATE_RPG_ROUNDS:
+				classInfo.mClassId = HL2DM_WP_RPG;
+				break;
+			case AMMOCRATE_BUCKSHOT:
+				classInfo.mClassId = HL2DM_WP_SHOTGUN;
+				break;
+			case AMMOCRATE_357:
+				classInfo.mClassId = HL2DM_WP_REVOLVER;
+				break;
+			case AMMOCRATE_GRENADES:
+				classInfo.mClassId = HL2DM_WP_GRENADE;
+				break;
+			case AMMOCRATE_CROSSBOW:
+				classInfo.mClassId = HL2DM_WP_CROSSBOW;
+				break;
+			case AMMOCRATE_AR2_ALTFIRE:
+				classInfo.mGroup = ENT_GRP_AMMO2;
+				classInfo.mClassId = HL2DM_WP_AR2;
+				break;
+			case AMMOCRATE_SMG_ALTFIRE:
+				classInfo.mGroup = ENT_GRP_AMMO2;
+				classInfo.mClassId = HL2DM_WP_SMG;
+				break;
+			default:
+				return false;
+		}
+
+
+		return true;
+	}
+#endif
 protected:
 
 	int		m_nAmmoType;

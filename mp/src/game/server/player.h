@@ -430,7 +430,7 @@ public:
 	// Player is moved across the transition by other means
 	virtual int				ObjectCaps( void ) { return BaseClass::ObjectCaps() & ~FCAP_ACROSS_TRANSITION; }
 	virtual void			Precache( void );
-	bool					IsOnLadder( void );
+	bool					IsOnLadder( void ) const;
 	virtual void			ExitLadder() {}
 	virtual surfacedata_t	*GetLadderSurface( const Vector &origin );
 
@@ -619,6 +619,10 @@ public:
 	virtual void			EquipWearable( CEconWearable *pItem );
 	virtual void			RemoveWearable( CEconWearable *pItem );
 	void					PlayWearableAnimsForPlaybackEvent( wearableanimplayback_t iPlayback );
+#endif
+
+#ifdef USE_OMNIBOT
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
 #endif
 
 public:

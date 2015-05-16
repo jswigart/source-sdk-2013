@@ -240,6 +240,20 @@ public:
 
 #endif	//CLIENT_DLL
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_WEAPON;
+		classInfo.mClassId = HL2DM_WP_RPG;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_WEAPON );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
+	
 	CBaseEntity *GetMissile( void ) { return m_hMissile; }
 
 #ifndef CLIENT_DLL

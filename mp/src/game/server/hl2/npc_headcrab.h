@@ -91,6 +91,19 @@ public:
 
 	void DropFromCeiling( void );
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_HEADCRAB;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
+	
 	DEFINE_CUSTOM_AI;
 	DECLARE_DATADESC();
 
@@ -223,6 +236,20 @@ public:
 	};
 
 	DEFINE_CUSTOM_AI;
+
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_HEADCRAB_FAST;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
+
 };
 
 

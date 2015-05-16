@@ -409,9 +409,22 @@ public:
 	virtual void Operator_HandleAnimEvent( animevent_t *pEvent, CBaseCombatCharacter *pOperator );
 #endif
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_WEAPON;
+		classInfo.mClassId = HL2DM_WP_CROSSBOW;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_WEAPON );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
+
 	DECLARE_NETWORKCLASS(); 
 	DECLARE_PREDICTABLE();
-
 private:
 	
 	void	SetSkin( int skinNum );

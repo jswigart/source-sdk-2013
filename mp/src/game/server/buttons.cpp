@@ -14,6 +14,10 @@
 #include "buttons.h"
 #include "eventqueue.h"
 
+#ifdef USE_OMNIBOT
+#include "omnibot/omnibot_interface.h"
+#endif
+
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
@@ -684,6 +688,13 @@ void CBaseButton::ButtonActivate( void )
 		LinearMove( m_vecPosition2, m_flSpeed);
 	else
 		AngularMove( m_vecAngle2, m_flSpeed);
+
+#ifdef USE_OMNIBOT
+	// Omnibot notification
+	const char *n = GetEntityName().ToCStr();
+	if ( !n ) n = UTIL_VarArgs( "button_%d", entindex() );
+	omnibot_interface::Trigger( this, m_hActivator.Get(), n, "button_activate" );
+#endif
 }
 
 
@@ -791,6 +802,13 @@ void CBaseButton::ButtonBackHome( void )
 		SetThink ( &CBaseButton::ButtonSpark );
 		SetNextThink( gpGlobals->curtime + 0.5f );// no hurry
 	}
+
+#ifdef USE_OMNIBOT
+	// Omnibot notification
+	const char *n = GetEntityName().ToCStr();
+	if ( !n ) n = UTIL_VarArgs( "button_%d", entindex() );
+	omnibot_interface::Trigger( this, NULL, n, "button_reset" );
+#endif
 }
 
 

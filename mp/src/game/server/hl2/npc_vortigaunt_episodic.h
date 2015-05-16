@@ -138,6 +138,19 @@ public:
 	// used so a grub can notify me that I stepped on it. Says a line.
 	void	OnSquishedGrub( const CBaseEntity *pGrub );
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_VORTIGAUNT;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
+
 private:
 
 	int		NumAntlionsInRadius( float flRadius );

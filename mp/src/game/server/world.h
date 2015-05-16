@@ -51,6 +51,10 @@ public:
 	void SetStartDark( bool startdark );
 
 	bool IsColdWorld( void );
+	
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
+#endif
 
 private:
 	DECLARE_DATADESC();

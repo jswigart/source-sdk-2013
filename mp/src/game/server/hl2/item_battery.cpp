@@ -38,6 +38,22 @@ public:
 		CHL2_Player *pHL2Player = dynamic_cast<CHL2_Player *>( pPlayer );
 		return ( pHL2Player && pHL2Player->ApplyBattery() );
 	}
+
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		extern ConVar	sk_battery;
+
+		classInfo.mGroup = ENT_GRP_ENERGY;
+		//classInfo.mClassId = ;
+		classInfo.SetQuantity( sk_battery.GetFloat() );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_ENERGY );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
+
 };
 
 LINK_ENTITY_TO_CLASS(item_battery, CItemBattery);

@@ -157,6 +157,19 @@ public:
 	int			m_iBirdType;
 	bool		m_bOnJeep;
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_CROW;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
+
 protected:
 	void SetFlyingState( FlyState_t eState );
 	inline bool IsFlying( void ) const { return GetNavType() == NAV_FLY; }

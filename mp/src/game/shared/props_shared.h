@@ -126,8 +126,8 @@ public:
 	// Explosive
 	virtual void		SetExplosiveRadius( float flRadius ) = 0;
 	virtual void		SetExplosiveDamage( float flDamage ) = 0;
-	virtual float		GetExplosiveRadius( void ) = 0;
-	virtual float		GetExplosiveDamage( void ) = 0;
+	virtual float		GetExplosiveRadius( void ) const = 0;
+	virtual float		GetExplosiveDamage( void ) const = 0;
 
 	// Physics damage tables
 	virtual void		SetPhysicsDamageTable( string_t iszTableName ) = 0;

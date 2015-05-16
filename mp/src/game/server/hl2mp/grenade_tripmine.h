@@ -37,6 +37,19 @@ public:
 	void MakeBeam( void );
 	void KillBeam( void );
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_PROJECTILE;
+		classInfo.mClassId = HL2DM_CLASSEX_TRIPMINE;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PROJECTILE );
+		return true;
+	}
+#endif
+
 public:
 	EHANDLE		m_hOwner;
 

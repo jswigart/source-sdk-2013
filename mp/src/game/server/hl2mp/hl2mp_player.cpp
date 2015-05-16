@@ -108,7 +108,7 @@ CHL2MP_Player::CHL2MP_Player() : m_PlayerAnimState( this )
 	m_iSpawnInterpCounter = 0;
 
     m_bEnterObserver = false;
-	m_bReady = false;
+	m_bReady = false;	
 
 	BaseClass::ChangeTeam( 0 );
 	

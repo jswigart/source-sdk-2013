@@ -38,6 +38,19 @@ public:
 	bool			m_bInAir;
 	Vector			m_vLastPosition;
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_PROJECTILE;
+		classInfo.mClassId = HL2DM_CLASSEX_SATCHEL;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PROJECTILE );
+		return true;
+	}
+#endif
+
 public:
 	CWeapon_SLAM*	m_pMyWeaponSLAM;	// Who shot me..
 	bool			m_bIsAttached;

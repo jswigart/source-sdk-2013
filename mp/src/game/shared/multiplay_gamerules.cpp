@@ -44,6 +44,10 @@
 
 #endif
 
+#ifdef USE_OMNIBOT
+#include "omnibot/omnibot_interface.h"
+#endif
+
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
@@ -880,6 +884,14 @@ ConVarRef suitcharger( "sk_suitcharger" );
 			gameeventmanager->FireEvent( event );
 		}
 
+#ifdef USE_OMNIBOT
+#ifndef CLIENT_DLL
+		omnibot_interface::Notify_Death( pVictim, pKiller, killer_weapon_name );
+		CBasePlayer * pPlayerKiller = ToBasePlayer( pKiller );
+		if ( pPlayerKiller )
+			omnibot_interface::Notify_KilledSomeone( pPlayerKiller, pVictim, killer_weapon_name );
+#endif
+#endif
 	}
 
 	//=========================================================

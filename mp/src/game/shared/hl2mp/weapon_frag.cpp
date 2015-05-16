@@ -69,6 +69,19 @@ public:
 	void	ThrowGrenade( CBasePlayer *pPlayer );
 	bool	IsPrimed( bool ) { return ( m_AttackPaused != 0 );	}
 	
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_WEAPON;
+		classInfo.mClassId = HL2DM_WP_GRENADE;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_WEAPON );
+		return true;
+	}
+#endif
+
 private:
 
 	void	RollGrenade( CBasePlayer *pPlayer );

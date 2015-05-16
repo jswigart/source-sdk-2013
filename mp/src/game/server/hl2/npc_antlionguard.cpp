@@ -307,6 +307,19 @@ public:
 
 	DEFINE_CUSTOM_AI;
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_MONSTER;
+		classInfo.mClassId = HL2DM_CLASSEX_ANTLION_GUARD;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+		return true;
+	}
+#endif
+
 private:
 
 	inline bool CanStandAtPoint( const Vector &vecPos, Vector *pOut );

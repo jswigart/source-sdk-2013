@@ -39,6 +39,19 @@ public:
 	virtual void VPhysicsCollision( int index, gamevcollisionevent_t *pEvent );
 	virtual void OnPhysGunPickup( CBasePlayer *pPhysGunUser, PhysGunPickup_t reason );
 
+#if(USE_OMNIBOT)
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		classInfo.mGroup = ENT_GRP_WEAPON;
+		//classInfo.mClassId = ;
+		classInfo.SetQuantity( m_nItemCount );
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_HEALTH );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
+
 protected:
 	virtual void OnBreak( const Vector &vecVelocity, const AngularImpulse &angVel, CBaseEntity *pBreaker );
 

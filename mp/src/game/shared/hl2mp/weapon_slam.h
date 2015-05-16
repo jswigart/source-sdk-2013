@@ -75,7 +75,20 @@ public:
 	bool				Deploy( void );
 	bool				Holster( CBaseCombatWeapon *pSwitchingTo = NULL );
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
 
+		classInfo.mGroup = ENT_GRP_WEAPON;
+		classInfo.mClassId = HL2DM_WP_SLAM;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_WEAPON );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
+	
 	CWeapon_SLAM();
 
 #ifndef CLIENT_DLL

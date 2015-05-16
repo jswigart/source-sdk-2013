@@ -731,3 +731,13 @@ bool CWorld::IsColdWorld( void )
 {
 	return m_bColdWorld;
 }
+
+#if(USE_OMNIBOT)
+bool CWorld::GetOmnibotEntityType( EntityInfo& classInfo ) const
+{
+	BaseClass::GetOmnibotEntityType( classInfo );
+
+	classInfo.mGroup = ENT_GRP_MAP;
+	return true;
+}
+#endif

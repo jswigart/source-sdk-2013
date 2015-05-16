@@ -1111,6 +1111,9 @@ public:
 
 	EHANDLE m_hOldAttachedObject;
 
+#ifndef CLIENT_DLL
+	bool GetLaunchForce( CBaseEntity *pEntity, float &lVel, AngularImpulse &aVel );
+#endif
 protected:
 	enum FindObjectResult_t
 	{
@@ -1133,6 +1136,28 @@ protected:
 	FindObjectResult_t		FindObject( void );
 	CBaseEntity *FindObjectInCone( const Vector &vecOrigin, const Vector &vecDir, float flCone );
 #endif	// !CLIENT_DLL
+
+#ifdef USE_OMNIBOT
+	bool BotCanPickUpObject( CBaseEntity * ent )
+	{
+		return ent ? CanPickupObject( ent ) : false;
+	}
+	
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
+	{
+		BaseClass::GetOmnibotEntityType( classInfo );
+
+		classInfo.mGroup = ENT_GRP_WEAPON;
+		classInfo.mClassId = HL2DM_WP_GRAVGUN;
+
+		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_WEAPON );
+		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		return true;
+	}
+#endif
+
+#endif
 
 	void	UpdateObject( void );
 	void	DetachObject( bool playSound = true, bool wasLaunched = false );
@@ -1750,6 +1775,31 @@ void CWeaponPhysCannon::PuntVPhysics( CBaseEntity *pEntity, const Vector &vecFor
 	m_flNextSecondaryAttack = m_flNextPrimaryAttack = gpGlobals->curtime + 0.5f;
 }
 
+#ifndef CLIENT_DLL
+bool CWeaponPhysCannon::GetLaunchForce( CBaseEntity *pEntity, float &lVel, AngularImpulse &aVel )
+{
+	IPhysicsObject *pPhysicsObject = pEntity->VPhysicsGetObject();
+	Assert( pPhysicsObject ); // Shouldn't ever get here with a non-vphysics object.
+	if ( !pPhysicsObject )
+		return false;
+
+	float flForceMax = physcannon_maxforce.GetFloat();
+	lVel = flForceMax;
+
+	float mass = pPhysicsObject->GetMass();
+	if ( mass > 100 )
+	{
+		mass = min( mass, 1000 );
+		float flForceMin = physcannon_minforce.GetFloat();
+		lVel = SimpleSplineRemapVal( mass, 100, 600, flForceMax, flForceMin );
+	}
+
+	// FIXME: Josh needs to put a real value in for PHYSGUN_FORCE_PUNTED
+	aVel = Pickup_PhysGunLaunchAngularImpulse( pEntity, PHYSGUN_FORCE_PUNTED );
+	return true;
+}
+#endif
+
 //-----------------------------------------------------------------------------
 // Purpose: Applies velocity-based forces to throw the entity. This code is
 //			called from both punt and launch carried code.
@@ -1759,30 +1809,19 @@ void CWeaponPhysCannon::PuntVPhysics( CBaseEntity *pEntity, const Vector &vecFor
 void CWeaponPhysCannon::ApplyVelocityBasedForce( CBaseEntity *pEntity, const Vector &forward )
 {
 #ifndef CLIENT_DLL
-	IPhysicsObject *pPhysicsObject = pEntity->VPhysicsGetObject();
-	Assert(pPhysicsObject); // Shouldn't ever get here with a non-vphysics object.
-	if (!pPhysicsObject)
-		return;
-
-	float flForceMax = physcannon_maxforce.GetFloat();
-	float flForce = flForceMax;
-
-	float mass = pPhysicsObject->GetMass();
-	if (mass > 100)
+	float lSpeed = 0.0f;
+	AngularImpulse aVel;
+	if ( GetLaunchForce( pEntity, lSpeed, aVel ) )
 	{
-		mass = MIN(mass, 1000);
-		float flForceMin = physcannon_minforce.GetFloat();
-		flForce = SimpleSplineRemapVal(mass, 100, 600, flForceMax, flForceMin);
+		IPhysicsObject *pPhysicsObject = pEntity->VPhysicsGetObject();
+		Assert( pPhysicsObject ); // Shouldn't ever get here with a non-vphysics object.
+		if ( !pPhysicsObject )
+			return;
+
+		Vector vVel = forward * lSpeed;
+		pPhysicsObject->AddVelocity( &vVel, &aVel );
 	}
-
-	Vector vVel = forward * flForce;
-	// FIXME: Josh needs to put a real value in for PHYSGUN_FORCE_PUNTED
-	AngularImpulse aVel = Pickup_PhysGunLaunchAngularImpulse( pEntity, PHYSGUN_FORCE_PUNTED );
-		
-	pPhysicsObject->AddVelocity( &vVel, &aVel );
-
 #endif
-
 }
 
 
@@ -3602,6 +3641,26 @@ float PlayerPickupGetHeldObjectMass( CBaseEntity *pPickupControllerEntity, IPhys
 		mass = grab.GetSavedMass( pHeldObject );
 	}
 	return mass;
+}
+
+
+bool PhysCannonGetInfo( CBaseCombatWeapon *pActiveWeapon, CBaseEntity *& pHeldEnt, CBaseEntity *&pPullEnt, float &launchSpeed)
+{
+#ifndef CLIENT_DLL
+	CWeaponPhysCannon *pCannon = dynamic_cast<CWeaponPhysCannon *>(pActiveWeapon);
+	if ( pCannon )
+	{
+		CGrabController &grab = pCannon->GetGrabController();
+		pHeldEnt = grab.GetAttached();
+		if ( pHeldEnt )
+		{
+			AngularImpulse aVel;
+			pCannon->GetLaunchForce(pHeldEnt,launchSpeed,aVel);
+		}
+		return true;
+	}
+#endif
+	return false;
 }
 
 #ifdef CLIENT_DLL
