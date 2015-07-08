@@ -72,9 +72,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_PISTOL;
-		classInfo.SetQuantity( SIZE_AMMO_PISTOL );
+		classInfo.mQuantity.Set( SIZE_AMMO_PISTOL );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -120,9 +119,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_PISTOL;
-		classInfo.SetQuantity( SIZE_AMMO_PISTOL_LARGE );
+		classInfo.mQuantity.Set( SIZE_AMMO_PISTOL_LARGE );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -167,9 +165,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_SMG;
-		classInfo.SetQuantity( SIZE_AMMO_SMG1 );
+		classInfo.mQuantity.Set( SIZE_AMMO_SMG1 );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -213,9 +210,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_SMG;
-		classInfo.SetQuantity( SIZE_AMMO_SMG1_LARGE );
+		classInfo.mQuantity.Set( SIZE_AMMO_SMG1_LARGE );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -259,9 +255,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_AR2;
-		classInfo.SetQuantity( SIZE_AMMO_AR2 );
+		classInfo.mQuantity.Set( SIZE_AMMO_AR2 );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -305,9 +300,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_AR2;
-		classInfo.SetQuantity( SIZE_AMMO_AR2_LARGE );
+		classInfo.mQuantity.Set( SIZE_AMMO_AR2_LARGE );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -353,9 +347,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_REVOLVER;
-		classInfo.SetQuantity( SIZE_AMMO_357 );
+		classInfo.mQuantity.Set( SIZE_AMMO_357 );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -400,9 +393,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_REVOLVER;
-		classInfo.SetQuantity( SIZE_AMMO_357_LARGE );
+		classInfo.mQuantity.Set( SIZE_AMMO_357_LARGE );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -448,9 +440,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_CROSSBOW;
-		classInfo.SetQuantity( SIZE_AMMO_CROSSBOW );
+		classInfo.mQuantity.Set( SIZE_AMMO_CROSSBOW );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -494,9 +485,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_FLAREGUN;
-		classInfo.SetQuantity( 1 );
+		classInfo.mQuantity.Set( 1 );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -541,9 +531,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_FLAREGUN;
-		classInfo.SetQuantity( SIZE_BOX_FLARE_ROUNDS );
+		classInfo.mQuantity.Set( SIZE_BOX_FLARE_ROUNDS );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -586,9 +575,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_RPG;
-		classInfo.SetQuantity( SIZE_AMMO_RPG_ROUND );
+		classInfo.mQuantity.Set( SIZE_AMMO_RPG_ROUND );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -632,9 +620,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO2;
 		classInfo.mClassId = HL2DM_WP_SMG;
-		classInfo.SetQuantity( SIZE_AMMO_SMG1_GRENADE );
+		classInfo.mQuantity.Set( SIZE_AMMO_SMG1_GRENADE );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -680,9 +667,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_SNIPER;
-		classInfo.SetQuantity( SIZE_BOX_SNIPER_ROUNDS );
+		classInfo.mQuantity.Set( SIZE_BOX_SNIPER_ROUNDS );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -726,9 +712,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		classInfo.mClassId = HL2DM_WP_SHOTGUN;
-		classInfo.SetQuantity( SIZE_AMMO_BUCKSHOT );
+		classInfo.mQuantity.Set( SIZE_AMMO_BUCKSHOT );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -774,9 +759,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO2;
 		classInfo.mClassId = HL2DM_WP_AR2;
-		classInfo.SetQuantity( SIZE_AMMO_AR2_ALTFIRE );
+		classInfo.mQuantity.Set( SIZE_AMMO_AR2_ALTFIRE );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -834,9 +818,9 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_AMMO1;
 		
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_AMMO );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
-		classInfo.SetQuantity( m_nAmmoAmounts[ m_nAmmoType ] );
+
+		classInfo.mQuantity.Set( m_nAmmoAmounts[ m_nAmmoType ] );
 
 		switch ( m_nAmmoType )
 		{

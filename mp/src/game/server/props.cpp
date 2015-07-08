@@ -5794,7 +5794,8 @@ bool CBreakableProp::GetOmnibotEntityType( EntityInfo& classInfo ) const
 	else
 		classInfo.mGroup = ENT_GRP_PROP;
 
-	//classInfo.mCategory.SetFlag( ENT_CAT_PROP_PUSHABLE );
+	classInfo.mCategory.SetFlag( ENT_CAT_DYNAMIC_NAV );
+	classInfo.mCategory.SetFlag( ENT_CAT_PROP_PUSHABLE );
 	classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
 	classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE );
 	classInfo.mCategory.SetFlag( ENT_CAT_MOVER );
@@ -5816,6 +5817,7 @@ bool CPhysicsProp::GetOmnibotEntityType( EntityInfo& classInfo ) const
 	else
 		classInfo.mGroup = ENT_GRP_PROP;
 
+	classInfo.mCategory.SetFlag( ENT_CAT_DYNAMIC_NAV );
 	classInfo.mCategory.SetFlag( ENT_CAT_PROP_PUSHABLE );
 	classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
 	classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE );

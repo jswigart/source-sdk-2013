@@ -103,6 +103,10 @@ public:
 	void InputUnlock( inputdata_t &inputdata );
 	void InputSetSpeed( inputdata_t &inputdata );
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
+#endif
+
 	Vector m_vecMoveDir;		// The direction of motion for linear moving doors.
 
 	locksound_t m_ls;			// door lock sounds

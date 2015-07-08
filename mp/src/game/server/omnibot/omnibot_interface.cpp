@@ -44,7 +44,7 @@ extern IServerPluginHelpers *serverpluginhelpers;
 ConVar	omnibot_enable( "omnibot_enable", "1", FCVAR_ARCHIVE | FCVAR_PROTECTED );
 ConVar	omnibot_path( "omnibot_path", "omni-bot", FCVAR_ARCHIVE | FCVAR_PROTECTED );
 
-bool g_Started = false;
+bool gStarted = false;
 
 #define OMNIBOT_MODNAME "Half-life 2"
 
@@ -205,11 +205,10 @@ void Bot_Event_EntityCreated( CBaseEntity *pEnt )
 {
 	if ( pEnt && IsOmnibotLoaded() )
 	{
-		// Get common properties.
 		Event_EntityCreated d;
 		d.mEntity = HandleFromEntity( pEnt );
 		if ( SUCCESS( gGameFunctions->GetEntityInfo( d.mEntity, d.mEntityInfo ) ) )
-		{	
+		{
 			gBotFunctions->SendGlobalEvent( MessageHelper( GAME_ENTITYCREATED, &d, sizeof( d ) ) );
 		}
 	}
@@ -221,7 +220,11 @@ void Bot_Event_EntityDeleted( CBaseEntity *pEnt )
 	{
 		if ( pEnt->GetCollideable() && pEnt->GetCollideable()->GetCollisionModelIndex() != -1 )
 		{
-			m_DeletedMapModels[ m_NumDeletedMapModels++ ] = pEnt->GetCollideable()->GetCollisionModelIndex();
+			string_t mdlName = pEnt->GetModelName();
+			if ( mdlName.ToCStr() && mdlName.ToCStr()[ 0 ] == '*' )
+			{
+				m_DeletedMapModels[ m_NumDeletedMapModels++ ] = atoi( &mdlName.ToCStr()[ 1 ] );
+			}
 		}
 
 		Event_EntityDeleted d;
@@ -572,7 +575,7 @@ public:
 						CONTENTS_CURRENT_UP | CONTENTS_CURRENT_DOWN |
 						CONTENTS_ORIGIN | CONTENTS_MONSTER | CONTENTS_DEBRIS |
 						CONTENTS_DETAIL | CONTENTS_TRANSLUCENT | CONTENTS_GRATE |
-						CONTENTS_WINDOW | CONTENTS_AUX );
+						CONTENTS_WINDOW | CONTENTS_AUX | LAST_VISIBLE_CONTENTS );
 
 					int iBotContents = 0;
 					ConvertBit( value, iBotContents, CONTENTS_SOLID, CONT_SOLID );
@@ -647,6 +650,12 @@ public:
 			}
 		}
 
+		if ( mapModelId == 0 )
+		{
+			entityOut = HandleFromEntity( GetWorldEntity() );
+			return Success;
+		}
+
 		return Success;
 	}
 
@@ -679,6 +688,9 @@ public:
 				Q_strncpy( modelOut.mModelName, &modelOut.mModelName[ 1 ], sizeof( modelOut.mModelName ) );
 				return Success;
 			}
+
+			const SolidType_t entitySolidType = pEnt->CollisionProp() ? pEnt->CollisionProp()->GetSolid() : SOLID_NONE;
+			entitySolidType;
 
 			return GetModel( modelOut, alloc );
 		}
@@ -1751,7 +1763,7 @@ public:
 
 	const char *GetGameName()
 	{
-		return "Halflife 2";
+		return "Halflife 2: Deathmatch";
 	}
 
 	const char *GetModName()
@@ -1893,7 +1905,7 @@ bool omnibot_interface::InitBotInterface()
 	omnibot_error err = Omnibot_LoadLibrary( HL2DM_VERSION_LATEST, "omnibot_hl2dm", Omnibot_FixPath( botPath ) );
 	if ( err == BOT_ERROR_NONE )
 	{
-		g_Started = false;
+		gStarted = false;
 		gEntList.RemoveListenerEntity( &gBotEntityListener );
 		gEntList.AddListenerEntity( &gBotEntityListener );
 
@@ -1966,10 +1978,10 @@ void omnibot_interface::UpdateBotInterface()
 			}
 		}
 		//////////////////////////////////////////////////////////////////////////
-		if ( !g_Started )
+		if ( !gStarted )
 		{
 			omnibot_interface::Notify_GameStarted();
-			g_Started = true;
+			gStarted = true;
 		}
 		gBotFunctions->Update();
 	}

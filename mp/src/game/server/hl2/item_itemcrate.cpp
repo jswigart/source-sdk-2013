@@ -44,9 +44,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_WEAPON;
 		//classInfo.mClassId = ;
-		classInfo.SetQuantity( m_nItemCount );
+		classInfo.mQuantity.Set( m_nItemCount );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_HEALTH );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}

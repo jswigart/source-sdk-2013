@@ -36,9 +36,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_HEALTH;
 		//classInfo.mClassId = ;
-		classInfo.SetQuantity( sk_healthkit.GetFloat() );
+		classInfo.mQuantity.Set( sk_healthkit.GetFloat() );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_HEALTH );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -164,9 +163,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_HEALTH;
 		//classInfo.mClassId = ;
-		classInfo.SetQuantity( sk_healthvial.GetFloat() );
+		classInfo.mQuantity.Set( sk_healthvial.GetFloat() );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_ENERGY );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -211,9 +209,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_DISPENSER;
 		classInfo.mClassId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
-		classInfo.SetQuantity( m_iJuice, sk_healthcharger.GetFloat() );
+		classInfo.mQuantity.Set( m_iJuice, sk_healthcharger.GetFloat() );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_HEALTH );
 		return true;
 	}
 #endif
@@ -491,9 +488,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_DISPENSER;
 		classInfo.mClassId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
-		classInfo.SetQuantity( m_flJuice, sk_healthcharger.GetFloat() );
+		classInfo.mQuantity.Set( m_flJuice, sk_healthcharger.GetFloat() );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_HEALTH );
 		return true;
 	}
 #endif

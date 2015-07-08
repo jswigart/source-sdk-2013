@@ -46,9 +46,8 @@ public:
 
 		classInfo.mGroup = ENT_GRP_ENERGY;
 		//classInfo.mClassId = ;
-		classInfo.SetQuantity( sk_battery.GetFloat() );
+		classInfo.mQuantity.Set( sk_battery.GetFloat() );
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_ENERGY );
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}

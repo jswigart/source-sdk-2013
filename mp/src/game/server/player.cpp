@@ -9375,6 +9375,8 @@ bool CBasePlayer::GetOmnibotEntityType( EntityInfo& classInfo ) const
 	classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE, true );
 	classInfo.mCategory.SetFlag( ENT_CAT_PLAYER, true );
 
+	classInfo.mArmor.Set( m_ArmorValue, 100 );
+
 	classInfo.mFlags.SetFlag( ENT_FLAG_VISTEST );
 
 	if ( !IsAlive() || GetHealth() <= 0 || GetTeamNumber() == TEAM_SPECTATOR )

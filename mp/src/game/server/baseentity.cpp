@@ -7296,7 +7296,6 @@ void CBaseEntity::SetCollisionBoundsFromModel()
 	}
 }
 
-
 #if(USE_OMNIBOT)
 bool CBaseEntity::GetOmnibotEntityType( EntityInfo& classInfo ) const
 {
@@ -7312,7 +7311,13 @@ bool CBaseEntity::GetOmnibotEntityType( EntityInfo& classInfo ) const
 	if ( GetFlags() & FL_ONGROUND )
 		classInfo.mFlags.SetFlag( ENT_FLAG_ONGROUND );
 
-	classInfo.SetHealth( GetHealth(), GetMaxHealth() );
+	classInfo.mHealth.Set( GetHealth(), GetMaxHealth() );
+
+	if ( VPhysicsGetObject() )
+	{
+		if( VPhysicsGetObject()->GetGameFlags() & FVPHYSICS_PLAYER_HELD )
+			classInfo.mFlags.SetFlag( ENT_FLAG_HELDBYPLAYER );
+	}
 
 	return false;
 }

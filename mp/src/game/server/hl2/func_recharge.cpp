@@ -52,7 +52,9 @@ public:
 		classInfo.mGroup = ENT_GRP_DISPENSER;
 		classInfo.mClassId = HL2DM_CLASSEX_ENERGY_WALLUNIT;
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
-		classInfo.SetQuantity( GetJuice(), MaxJuice() );
+		classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE, true );
+		classInfo.mFlags.SetFlag( ENT_FLAG_COLLIDABLE, IsSolid() );
+		classInfo.mQuantity.Set( GetJuice(), MaxJuice() );
 		return true;
 	}
 #endif
@@ -370,7 +372,9 @@ public:
 		classInfo.mGroup = ENT_GRP_DISPENSER;
 		classInfo.mClassId = HL2DM_CLASSEX_ENERGY_WALLUNIT;
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
-		classInfo.SetQuantity( GetJuice(), MaxJuice() );
+		classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE, true );
+		classInfo.mFlags.SetFlag( ENT_FLAG_COLLIDABLE, IsSolid() );
+		classInfo.mQuantity.Set( GetJuice(), MaxJuice() );
 		return true;
 	}
 #endif

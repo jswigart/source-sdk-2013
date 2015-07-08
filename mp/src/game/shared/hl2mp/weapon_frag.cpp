@@ -77,7 +77,6 @@ public:
 		classInfo.mGroup = ENT_GRP_WEAPON;
 		classInfo.mClassId = HL2DM_WP_GRENADE;
 
-		classInfo.mCategory.SetFlag( ENT_CAT_PICKUP_WEAPON );
 		return true;
 	}
 #endif

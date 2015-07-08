@@ -1289,6 +1289,25 @@ void CBaseDoor::EndBlocked( void )
 }
 
 
+#if(USE_OMNIBOT)
+bool CBaseDoor::GetOmnibotEntityType( EntityInfo& classInfo ) const
+{
+	BaseClass::GetOmnibotEntityType( classInfo );
+
+	classInfo.mGroup = ENT_GRP_MOVER;
+
+	classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE );
+	classInfo.mCategory.SetFlag( ENT_CAT_MOVER );
+	classInfo.mCategory.SetFlag( ENT_CAT_TRIGGER );
+
+	if ( VPhysicsGetObject() != NULL && IsSolid() )
+	{
+		classInfo.mFlags.SetFlag( ENT_FLAG_COLLIDABLE );
+	}
+	return true;
+}
+#endif
+
 /*func_door_rotating
 
 TOGGLE causes the door to wait in both the start and end states for  

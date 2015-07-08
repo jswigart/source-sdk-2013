@@ -577,7 +577,6 @@ void CBaseTrigger::InputToggle( inputdata_t &inputdata )
 	PhysicsTouchTriggers();
 }
 
-
 //-----------------------------------------------------------------------------
 // Purpose: Removes anything that touches it. If the trigger has a targetname,
 //			firing it will toggle state.
@@ -955,6 +954,24 @@ void CTriggerMultiple::MultiWaitOver( void )
 {
 	SetThink( NULL );
 }
+
+
+#if(USE_OMNIBOT)
+bool CTriggerMultiple::GetOmnibotEntityType( EntityInfo& classInfo ) const
+{
+	BaseClass::GetOmnibotEntityType( classInfo );
+
+	classInfo.mGroup = ENT_GRP_MAP;
+
+	classInfo.mCategory.SetFlag( ENT_CAT_TRIGGER );
+
+	if ( !m_bDisabled )
+	{
+		classInfo.mFlags.SetFlag( ENT_FLAG_COLLIDABLE );
+	}
+	return true;
+}
+#endif
 
 // ##################################################################################
 //	>> TriggerOnce
