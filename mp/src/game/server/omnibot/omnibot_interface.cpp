@@ -1609,32 +1609,35 @@ public:
 
 	bool PrintScreenText( const float _pos[ 3 ], float _duration, const obColor &_color, const char *_msg )
 	{
-		if ( _msg && debugoverlay )
+		if ( _msg )
 		{
-			// Handle newlines
 			float fVertical = 0.75;
-			int LineOffset = 0;
+
+			// Handle newlines
 			char buffer[ 1024 ] = {};
 			Q_strncpy( buffer, _msg, 1024 );
 			char *pbufferstart = buffer;
 
+			int line = 0;
 			int iLength = Q_strlen( buffer );
 			for ( int i = 0; i < iLength; ++i )
 			{
 				if ( buffer[ i ] == '\n' || buffer[ i + 1 ] == '\0' )
 				{
 					buffer[ i++ ] = 0;
+
 					if ( _pos )
 					{
 						Vector vPosition( _pos[ 0 ], _pos[ 1 ], _pos[ 2 ] );
-						debugoverlay->AddTextOverlay( vPosition, LineOffset++, _duration, pbufferstart );
+						debugoverlay->AddTextOverlayRGB( vPosition, line++, _duration, _color.rF(), _color.gF(), _color.bF(), _color.aF(), pbufferstart );
 					}
 					else
 					{
 						debugoverlay->AddScreenTextOverlay( 0.3f, fVertical, _duration,
 							_color.r(), _color.g(), _color.b(), _color.a(), pbufferstart );
-						fVertical += 0.02f;
 					}
+
+					fVertical += 0.02f;
 					pbufferstart = &buffer[ i ];
 				}
 			}
