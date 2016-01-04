@@ -54,7 +54,7 @@ public:
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
 		classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE, true );
 		classInfo.mFlags.SetFlag( ENT_FLAG_COLLIDABLE, IsSolid() );
-		classInfo.mQuantity.Set( GetJuice(), MaxJuice() );
+		classInfo.mEnergy.Set( GetJuice(), MaxJuice() );
 		return true;
 	}
 #endif
@@ -374,7 +374,7 @@ public:
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_WALLUNIT );
 		classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE, true );
 		classInfo.mFlags.SetFlag( ENT_FLAG_COLLIDABLE, IsSolid() );
-		classInfo.mQuantity.Set( GetJuice(), MaxJuice() );
+		classInfo.mEnergy.Set( GetJuice(), MaxJuice() );
 		return true;
 	}
 #endif

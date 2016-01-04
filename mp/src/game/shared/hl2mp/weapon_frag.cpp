@@ -74,8 +74,11 @@ public:
 	{
 		BaseClass::GetOmnibotEntityType( classInfo );
 
-		classInfo.mGroup = ENT_GRP_WEAPON;
-		classInfo.mClassId = HL2DM_WP_GRENADE;
+		if ( !GetOwner() )
+		{
+			classInfo.mGroup = ENT_GRP_WEAPON;
+			classInfo.mClassId = HL2DM_WP_GRENADE;
+		}
 
 		return true;
 	}

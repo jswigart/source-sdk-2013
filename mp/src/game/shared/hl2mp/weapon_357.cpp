@@ -44,11 +44,14 @@ public:
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
 		BaseClass::GetOmnibotEntityType( classInfo );
-
-		classInfo.mGroup = ENT_GRP_WEAPON;
-		classInfo.mClassId = HL2DM_WP_REVOLVER;
 		
-		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		if ( !GetOwner() )
+		{
+			classInfo.mGroup = ENT_GRP_WEAPON;
+			classInfo.mClassId = HL2DM_WP_REVOLVER;
+
+			classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		}
 		return true;
 	}
 #endif

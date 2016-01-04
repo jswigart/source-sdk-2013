@@ -245,10 +245,13 @@ public:
 	{
 		BaseClass::GetOmnibotEntityType( classInfo );
 
-		classInfo.mGroup = ENT_GRP_WEAPON;
-		classInfo.mClassId = HL2DM_WP_RPG;
+		if ( !GetOwner() )
+		{
+			classInfo.mGroup = ENT_GRP_WEAPON;
+			classInfo.mClassId = HL2DM_WP_RPG;
 
-		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+			classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		}
 		return true;
 	}
 #endif

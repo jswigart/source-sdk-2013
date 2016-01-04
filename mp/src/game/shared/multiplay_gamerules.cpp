@@ -884,7 +884,7 @@ ConVarRef suitcharger( "sk_suitcharger" );
 			gameeventmanager->FireEvent( event );
 		}
 
-#ifdef USE_OMNIBOT
+#if(USE_OMNIBOT)
 #ifndef CLIENT_DLL
 		omnibot_interface::Notify_Death( pVictim, pKiller, killer_weapon_name );
 		CBasePlayer * pPlayerKiller = ToBasePlayer( pKiller );

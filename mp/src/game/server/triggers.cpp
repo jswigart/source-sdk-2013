@@ -967,6 +967,7 @@ bool CTriggerMultiple::GetOmnibotEntityType( EntityInfo& classInfo ) const
 
 	if ( !m_bDisabled )
 	{
+		classInfo.mFlags.SetFlag( ENT_FLAG_DISABLED, false );
 		classInfo.mFlags.SetFlag( ENT_FLAG_COLLIDABLE );
 	}
 	return true;

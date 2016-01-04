@@ -9371,6 +9371,7 @@ bool CBasePlayer::GetOmnibotEntityType( EntityInfo& classInfo ) const
 {
 	BaseClass::GetOmnibotEntityType( classInfo );
 
+	classInfo.mGroup = ENT_GRP_PLAYER;
 	classInfo.mClassId = HL2DM_CLASS_PLAYER;
 	classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE, true );
 	classInfo.mCategory.SetFlag( ENT_CAT_PLAYER, true );

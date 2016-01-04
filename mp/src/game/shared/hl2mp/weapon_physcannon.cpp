@@ -1137,25 +1137,25 @@ protected:
 	CBaseEntity *FindObjectInCone( const Vector &vecOrigin, const Vector &vecDir, float flCone );
 #endif	// !CLIENT_DLL
 
-#ifdef USE_OMNIBOT
+#if(USE_OMNIBOT)
 	bool BotCanPickUpObject( CBaseEntity * ent )
 	{
 		return ent ? CanPickupObject( ent ) : false;
 	}
 	
-#if(USE_OMNIBOT)
 	bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
 		BaseClass::GetOmnibotEntityType( classInfo );
 
-		classInfo.mGroup = ENT_GRP_WEAPON;
-		classInfo.mClassId = HL2DM_WP_GRAVGUN;
+		if ( !GetOwner() )
+		{
+			classInfo.mGroup = ENT_GRP_WEAPON;
+			classInfo.mClassId = HL2DM_WP_GRAVGUN;
 
-		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+			classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		}
 		return true;
 	}
-#endif
-
 #endif
 
 	void	UpdateObject( void );

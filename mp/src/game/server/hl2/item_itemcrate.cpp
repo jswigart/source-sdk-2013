@@ -42,11 +42,10 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_WEAPON;
+		classInfo.mGroup = ENT_GRP_UNKNOWN;
 		//classInfo.mClassId = ;
-		classInfo.mQuantity.Set( m_nItemCount );
-
-		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		
+		//classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
 #endif

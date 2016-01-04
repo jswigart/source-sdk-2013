@@ -848,6 +848,17 @@ int CBaseButton::DrawDebugTextOverlays()
 	return text_offset;
 }
 
+#if(USE_OMNIBOT)
+bool CBaseButton::GetOmnibotEntityType( EntityInfo& classInfo ) const
+{
+	BaseClass::GetOmnibotEntityType( classInfo );
+
+	classInfo.mGroup = ENT_GRP_BUTTON;
+
+	return true;
+}
+#endif
+
 
 //
 // Rotating button (aka "lever")

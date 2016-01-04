@@ -24,6 +24,10 @@ public:
 	bool KeyValue( const char *szKeyName, const char *szValue );
 	int DrawDebugTextOverlays();
 
+#if(USE_OMNIBOT)
+	bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
+#endif
+
 protected:
 
 	void ButtonActivate( );

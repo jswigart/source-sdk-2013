@@ -1211,7 +1211,7 @@ bool CBreakable::GetOmnibotEntityType( EntityInfo& classInfo ) const
 	classInfo.mGroup = Explodable() ? ENT_GRP_PROP_EXPLODE : ENT_GRP_PROP_BREAKABLE;
 
 	classInfo.mCategory.SetFlag( ENT_CAT_NOLOS );
-	classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
+	//classInfo.mCategory.SetFlag( ENT_CAT_SHOOTABLE );
 	classInfo.mCategory.SetFlag( ENT_CAT_OBSTACLE );
 	return true;
 }

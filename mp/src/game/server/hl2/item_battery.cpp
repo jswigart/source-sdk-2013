@@ -44,9 +44,8 @@ public:
 	{
 		extern ConVar	sk_battery;
 
-		classInfo.mGroup = ENT_GRP_ENERGY;
-		//classInfo.mClassId = ;
-		classInfo.mQuantity.Set( sk_battery.GetFloat() );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mEnergy.Set( sk_battery.GetFloat() );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;

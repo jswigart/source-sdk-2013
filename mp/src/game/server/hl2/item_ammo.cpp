@@ -70,9 +70,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_PISTOL;
-		classInfo.mQuantity.Set( SIZE_AMMO_PISTOL );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_PISTOL, HL2DM_WP_PISTOL );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -117,9 +116,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_PISTOL;
-		classInfo.mQuantity.Set( SIZE_AMMO_PISTOL_LARGE );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_PISTOL_LARGE, HL2DM_WP_PISTOL );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -163,9 +161,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_SMG;
-		classInfo.mQuantity.Set( SIZE_AMMO_SMG1 );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_SMG1, HL2DM_WP_SMG );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -208,9 +205,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_SMG;
-		classInfo.mQuantity.Set( SIZE_AMMO_SMG1_LARGE );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_SMG1_LARGE, HL2DM_WP_SMG );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -253,9 +249,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_AR2;
-		classInfo.mQuantity.Set( SIZE_AMMO_AR2 );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_AR2, HL2DM_WP_AR2 );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -298,9 +293,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_AR2;
-		classInfo.mQuantity.Set( SIZE_AMMO_AR2_LARGE );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_AR2_LARGE, HL2DM_WP_AR2 );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -345,9 +339,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_REVOLVER;
-		classInfo.mQuantity.Set( SIZE_AMMO_357 );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_357, HL2DM_WP_REVOLVER );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -391,9 +384,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_REVOLVER;
-		classInfo.mQuantity.Set( SIZE_AMMO_357_LARGE );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_357_LARGE, HL2DM_WP_REVOLVER );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -438,9 +430,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_CROSSBOW;
-		classInfo.mQuantity.Set( SIZE_AMMO_CROSSBOW );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_CROSSBOW, HL2DM_WP_CROSSBOW );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -483,10 +474,9 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_FLAREGUN;
-		classInfo.mQuantity.Set( 1 );
-
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( 1, HL2DM_WP_FLAREGUN );
+		
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -529,9 +519,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_FLAREGUN;
-		classInfo.mQuantity.Set( SIZE_BOX_FLARE_ROUNDS );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_BOX_FLARE_ROUNDS, HL2DM_WP_FLAREGUN );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -573,9 +562,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_RPG;
-		classInfo.mQuantity.Set( SIZE_AMMO_RPG_ROUND );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_RPG_ROUND, HL2DM_WP_RPG );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -618,9 +606,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO2;
-		classInfo.mClassId = HL2DM_WP_SMG;
-		classInfo.mQuantity.Set( SIZE_AMMO_SMG1_GRENADE );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_SMG1_GRENADE, HL2DM_WP_SMG );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -665,10 +652,9 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_SNIPER;
-		classInfo.mQuantity.Set( SIZE_BOX_SNIPER_ROUNDS );
-
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_BOX_SNIPER_ROUNDS, HL2DM_WP_SNIPER );
+		
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -710,9 +696,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
-		classInfo.mClassId = HL2DM_WP_SHOTGUN;
-		classInfo.mQuantity.Set( SIZE_AMMO_BUCKSHOT );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_BUCKSHOT, HL2DM_WP_SHOTGUN );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -757,10 +742,9 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO2;
-		classInfo.mClassId = HL2DM_WP_AR2;
-		classInfo.mQuantity.Set( SIZE_AMMO_AR2_ALTFIRE );
-
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mAmmo[ 0 ].Set( SIZE_AMMO_AR2_ALTFIRE, HL2DM_WP_AR2 );
+		
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -816,51 +800,50 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_AMMO1;
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
 		
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
+		
+		for ( int i = 0; i < NUM_AMMO_CRATE_TYPES; ++i )
+		{
 
-		classInfo.mQuantity.Set( m_nAmmoAmounts[ m_nAmmoType ] );
+		}
 
 		switch ( m_nAmmoType )
 		{
 			case AMMOCRATE_SMALL_ROUNDS:
-				classInfo.mClassId = HL2DM_WP_PISTOL;
+				classInfo.mAmmo[ 0 ].Set( m_nAmmoAmounts[ m_nAmmoType ], HL2DM_WP_PISTOL );
 				break;
 			case AMMOCRATE_MEDIUM_ROUNDS:
-				classInfo.mClassId = HL2DM_WP_SMG;
+				classInfo.mAmmo[ 0 ].Set( m_nAmmoAmounts[ m_nAmmoType ], HL2DM_WP_SMG );
 				break;
 			case AMMOCRATE_LARGE_ROUNDS:
-				classInfo.mClassId = HL2DM_WP_AR2;
+				classInfo.mAmmo[ 0 ].Set( m_nAmmoAmounts[ m_nAmmoType ], HL2DM_WP_AR2 );
 				break;
 			case AMMOCRATE_RPG_ROUNDS:
-				classInfo.mClassId = HL2DM_WP_RPG;
+				classInfo.mAmmo[ 0 ].Set( m_nAmmoAmounts[ m_nAmmoType ], HL2DM_WP_RPG );
 				break;
 			case AMMOCRATE_BUCKSHOT:
-				classInfo.mClassId = HL2DM_WP_SHOTGUN;
+				classInfo.mAmmo[ 0 ].Set( m_nAmmoAmounts[ m_nAmmoType ], HL2DM_WP_SHOTGUN );
 				break;
 			case AMMOCRATE_357:
-				classInfo.mClassId = HL2DM_WP_REVOLVER;
+				classInfo.mAmmo[ 0 ].Set( m_nAmmoAmounts[ m_nAmmoType ], HL2DM_WP_REVOLVER );
 				break;
 			case AMMOCRATE_GRENADES:
-				classInfo.mClassId = HL2DM_WP_GRENADE;
+				classInfo.mAmmo[ 0 ].Set( m_nAmmoAmounts[ m_nAmmoType ], HL2DM_WP_GRENADE );
 				break;
 			case AMMOCRATE_CROSSBOW:
-				classInfo.mClassId = HL2DM_WP_CROSSBOW;
+				classInfo.mAmmo[ 0 ].Set( m_nAmmoAmounts[ m_nAmmoType ], HL2DM_WP_CROSSBOW );
 				break;
 			case AMMOCRATE_AR2_ALTFIRE:
-				classInfo.mGroup = ENT_GRP_AMMO2;
-				classInfo.mClassId = HL2DM_WP_AR2;
+				classInfo.mAmmo[ 0 ].Set( m_nAmmoAmounts[ m_nAmmoType ], HL2DM_WP_AR2 );
 				break;
 			case AMMOCRATE_SMG_ALTFIRE:
-				classInfo.mGroup = ENT_GRP_AMMO2;
-				classInfo.mClassId = HL2DM_WP_SMG;
+				classInfo.mAmmo[ 0 ].Set( m_nAmmoAmounts[ m_nAmmoType ], HL2DM_WP_SMG );
 				break;
 			default:
 				return false;
 		}
-
-
 		return true;
 	}
 #endif

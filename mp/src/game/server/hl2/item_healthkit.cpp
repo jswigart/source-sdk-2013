@@ -34,9 +34,8 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_HEALTH;
-		//classInfo.mClassId = ;
-		classInfo.mQuantity.Set( sk_healthkit.GetFloat() );
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mHealth.Set( sk_healthkit.GetFloat() );
 
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
@@ -161,10 +160,9 @@ public:
 #if(USE_OMNIBOT)
 	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const
 	{
-		classInfo.mGroup = ENT_GRP_HEALTH;
-		//classInfo.mClassId = ;
-		classInfo.mQuantity.Set( sk_healthvial.GetFloat() );
-
+		classInfo.mGroup = ENT_GRP_RESUPPLY;
+		classInfo.mHealth.Set( sk_healthvial.GetFloat() );
+		
 		classInfo.mCategory.SetFlag( HL2DM_ENT_CAT_PHYSPICKUP );
 		return true;
 	}
@@ -209,8 +207,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_DISPENSER;
 		classInfo.mClassId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
-		classInfo.mQuantity.Set( m_iJuice, sk_healthcharger.GetFloat() );
-
+		classInfo.mHealth.Set( m_iJuice, sk_healthcharger.GetFloat() );
+		
 		return true;
 	}
 #endif
@@ -488,8 +486,8 @@ public:
 	{
 		classInfo.mGroup = ENT_GRP_DISPENSER;
 		classInfo.mClassId = HL2DM_CLASSEX_HEALTH_WALLUNIT;
-		classInfo.mQuantity.Set( m_flJuice, sk_healthcharger.GetFloat() );
-
+		classInfo.mHealth.Set( m_flJuice, sk_healthcharger.GetFloat() );
+		
 		return true;
 	}
 #endif
