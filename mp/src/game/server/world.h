@@ -56,6 +56,10 @@ public:
 	bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
 #endif
 
+#ifdef USE_OMNIBOT
+	virtual bool GetOmnibotEntityType( EntityInfo& classInfo ) const;
+#endif
+
 private:
 	DECLARE_DATADESC();
 
