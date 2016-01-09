@@ -40,8 +40,8 @@
     <Filter Include="VPC Scripts">
       <UniqueIdentifier>{A40EE377-781A-C6B9-0C7C-B3BE118D248E}</UniqueIdentifier>
     </Filter>
-    <Filter Include="omnibot">
-      <UniqueIdentifier>{46789296-a831-4d11-a63e-5dd6e084b524}</UniqueIdentifier>
+    <Filter Include="Source Files\omnibot">
+      <UniqueIdentifier>{24122fab-5560-42cd-968f-65970a686100}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1830,46 +1830,46 @@
       <Filter>Tools Framework</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\Base_Messages.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\BotExports.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\Functions_Bot.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\HL2DM_Config.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
-    <ClInclude Include="omnibot\hl2dm_messages.h">
-      <Filter>omnibot</Filter>
+    <ClInclude Include="omnibot\HL2DM_Messages.h">
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\IEngineInterface.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\Omni-Bot.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\Omni-Bot_BasicTypes.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\Omni-Bot_BitFlags.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\Omni-Bot_Color.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\omnibot_eventhandler.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\Omni-Bot_Events.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\omnibot_interface.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
     <ClInclude Include="omnibot\Omni-Bot_Types.h">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -3602,13 +3602,13 @@
       <Filter>Tools Framework</Filter>
     </ClCompile>
     <ClCompile Include="omnibot\BotLoadLibrary.cpp">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClCompile>
     <ClCompile Include="omnibot\omnibot_eventhandler.cpp">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClCompile>
     <ClCompile Include="omnibot\omnibot_interface.cpp">
-      <Filter>omnibot</Filter>
+      <Filter>Source Files\omnibot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
