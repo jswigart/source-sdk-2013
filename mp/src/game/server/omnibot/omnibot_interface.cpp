@@ -1614,6 +1614,11 @@ public:
 		return false;
 	}
 
+	bool GetLocationName(const float pos[3], char buffer[], size_t bufferSize)
+	{
+		return false;
+	}
+
 	bool ServerScriptEvent( const char* func, const char* entName, const obUserData params [], size_t numParams )
 	{
 		return false;
